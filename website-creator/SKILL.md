@@ -68,6 +68,7 @@ Everything that depends on the country lives in a country file: domain and trade
 |---|---|---|---|
 | a coding agent (Claude Code, Codex or similar) | yes | everything | |
 | impeccable (plugin) | yes | product context, design directions, check against the AI look, independent sign-off, design system | |
+| GSAP with ScrollTrigger and SplitText (free, self-hosted in the project) | yes | all animation, headings included | |
 | Python with Playwright | recommended | screenshots, brand extraction, check runs | screenshots by hand, colors from the logo |
 | DataForSEO (MCP) | optional, about $1 per project | search volume, Google results, ChatGPT answers | Google search by hand, ask ChatGPT yourself, keyword estimate |
 | hosting MCP (e.g. Hostinger) | optional | deployment straight from the agent | upload a zip file in the host's file manager |

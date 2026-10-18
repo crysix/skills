@@ -12,6 +12,7 @@ A skill for AI agents like Claude Code or Codex that walks you step by step thro
 | **Output** | a static HTML/CSS/JS site, online on your own web space |
 | **Phases** | nine, each with a sign-off before the next one starts |
 | **Design** | [impeccable](https://github.com/pbakaus/impeccable) plugin, against the generic AI look |
+| **Animation** | [GSAP](https://gsap.com) with ScrollTrigger and SplitText, self-hosted |
 | **Research** | DataForSEO (optional, about $1 per project) |
 | **Country** | Germany by default, Austria and Switzerland included (legal pages, cookie law, selling online); for other countries the skill researches a profile from official sources |
 
@@ -160,6 +161,7 @@ Copy comes before design, so the layout is built for real content instead of pla
 **5 · Build**
 - Static HTML, CSS and a little JavaScript: self-hosted fonts, CSS variables, the form (via `mailto:` until phase 7), structured data, favicons.
 - The first draft already has depth: sections set apart by color, processes as graphics, no empty sections.
+- Animation with GSAP, self-hosted: headings build up with SplitText (still readable for screen readers), fade-ins and processes run with ScrollTrigger. Everything respects reduced motion, and the content stays visible without JavaScript.
 
 **6 · Review and polish**
 - `check_site.py`: screenshots on desktop and phone, console errors, horizontal scrolling, missing alt texts, heading order.

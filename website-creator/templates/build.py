@@ -18,6 +18,7 @@ FILES = [
     "index.html", "impressum.html", "datenschutz.html",
     "robots.txt", "sitemap.xml", "llms.txt", ".htaccess",
     "assets/css/site.css", "assets/css/tweaks.css", "assets/js/main.js",
+    "assets/js/vendor/gsap.min.js", "assets/js/vendor/ScrollTrigger.min.js", "assets/js/vendor/SplitText.min.js",
     # Fonts, for example:
     # "assets/fonts/font-latin-wght-normal.woff2",
     "assets/img/logo.svg", "assets/img/favicon.svg",
