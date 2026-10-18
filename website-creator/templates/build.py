@@ -1,6 +1,6 @@
 """Builds the upload folder dist/ and dist.zip with exactly the files that go live.
 
-Run in the project folder:  python deploy/build.py
+Run in the project folder:  python3 deploy/build.py
 
 The FILES list is maintained by hand on purpose: that way research, drafts,
 the tweak panel and other working files never land on the server.

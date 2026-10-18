@@ -8,7 +8,7 @@
      2. Adapt colors, fonts, logo and texts to the site. Include the site's stylesheet
         so fonts and variables match. Set lang to the site's language.
      3. Photograph it:
-        python -c "from playwright.sync_api import sync_playwright as p; b=p().start().chromium.launch(); pg=b.new_page(viewport={'width':1200,'height':630}); pg.goto('http://localhost:8000/tweak/og-image.html'); pg.wait_for_timeout(800); pg.screenshot(path='assets/img/og-image.png'); b.close()"
+        python3 -c "from playwright.sync_api import sync_playwright as p; b=p().start().chromium.launch(); pg=b.new_page(viewport={'width':1200,'height':630}); pg.goto('http://localhost:8000/tweak/og-image.html'); pg.wait_for_timeout(800); pg.screenshot(path='assets/img/og-image.png'); b.close()"
      4. In the site's <head>: og:image and twitter:image with an absolute address. -->
 <link rel="stylesheet" href="../assets/css/site.css">
 <style>

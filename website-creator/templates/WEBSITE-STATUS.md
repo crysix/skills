@@ -22,6 +22,7 @@ Status: ✅ done · 🔄 in progress · ⬜ open
 - Main goal of the site:
 - Hosting:
 - Tools: impeccable ⬜ · Playwright ⬜ · DataForSEO ⬜ · hosting MCP ⬜ · form target ⬜
+- Python command (for the skill's scripts):
 
 ## Brand
 
@@ -48,7 +49,7 @@ Every decision of the user with a date, so it isn't discussed again.
 ## Update flow after launch
 
 1. Change on the site and in `copy.md`
-2. `python deploy/build.py`
+2. `python3 deploy/build.py`
 3. Upload:
 4. Clear cache:
 5. Check live

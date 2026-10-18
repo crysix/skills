@@ -37,7 +37,7 @@ Principles:
 7. **Structured data** in the page head as JSON-LD: `Person` and/or `Organization` or `ProfessionalService`, plus `FAQPage` if there are questions. Template: [../templates/structured-data.json](../templates/structured-data.json). Only facts from `PRODUCT.md` and `copy.md`.
 8. Favicon set: `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` (180 pixels), `favicon-512.png`.
 
-View locally: `python -m http.server 8000` in the project folder, then `http://localhost:8000`.
+View locally: `python3 -m http.server 8000` in the project folder, then `http://localhost:8000`.
 
 ## Build with depth from the start
 

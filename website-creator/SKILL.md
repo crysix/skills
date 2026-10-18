@@ -30,7 +30,7 @@ The order has reasons. Copy comes before design, because a design direction with
 ## Flow on every call
 
 1. **Read the status file.** Is there a `WEBSITE-STATUS.md` in the project folder? Then continue where it says, and state in one sentence which phase is up. If there is none, start with phase 0 and create it from [templates/WEBSITE-STATUS.md](templates/WEBSITE-STATUS.md).
-2. **Load only the current phase file.** Not all of them at once. Each phase file says what must exist at the end.
+2. **Load only the current phase file.** Not all of them at once. Each phase file says what must exist at the end. Phases 2 and 7 have extra files (DataForSEO setup, cookies and terms, Hostinger deployment); the phase file says when to load them.
 3. **Work through the phase.** Ask questions only where the phase file calls for a decision by the user. Do everything else yourself.
 4. **Wrap up.** Briefly show what was produced (files, screenshots, numbers), update the status file, announce the next phase in one sentence and ask whether to continue.
 
@@ -69,7 +69,7 @@ In the same chat, work simply continues after each phase and after each restart,
 | hosting MCP (e.g. Hostinger) | optional | deployment straight from the agent | upload a zip file in the host's file manager |
 | n8n, Make or a form service | optional | receive inquiries from the form | `mailto:` fallback in the form |
 
-Each tool is set up where it's needed: impeccable and Playwright in [phase 0](phases/0-setup.md), DataForSEO in [phase 2](phases/2-research.md), the hosting MCP in [phase 7](phases/7-launch.md).
+Each tool is set up where it's needed: impeccable and Playwright in [phase 0](phases/0-setup.md), DataForSEO in [phase 2](phases/2-dataforseo-setup.md), the hosting MCP in [phase 7](phases/7-hostinger.md).
 
 ## Other files
 
@@ -78,3 +78,5 @@ Each tool is set up where it's needed: impeccable and Playwright in [phase 0](ph
 - [tools/](tools/): `extract_brand.py` (measure colors and fonts of a live site) and `check_site.py` (batched check run with screenshots).
 
 Templates and tools live in the folder of this SKILL.md, not in the user's project. Call scripts with the full path to the skill folder; copy templates into the project and adapt them there. Replace placeholders such as `DOMAIN.TLD` before launch.
+
+Commands in this skill say `python3`. Use the Python command recorded in the status file in phase 0 instead (on Windows usually `python`, with a virtual environment its full path).

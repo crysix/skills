@@ -17,7 +17,7 @@ Goal: The site is online, findable for Google and AI search engines, legally sou
 
 The preview image is made like this: copy the template into the `tweak/` folder, adapt the texts, photograph it with Playwright at 1200 × 630 as a PNG, put it at `assets/img/og-image.png`.
 
-Run **Lighthouse** (mobile): `npx lighthouse@12 http://localhost:8000 --form-factor=mobile --output=html --output-path=lighthouse.html`. Goal: above 90 in all four categories.
+Run **Lighthouse** (mobile): `npx lighthouse@13 http://localhost:8000 --form-factor=mobile --output=html --output-path=lighthouse.html`. Goal: above 90 in all four categories.
 
 ## 2. Check cookies and terms
 
@@ -85,16 +85,7 @@ For every route: a real test inquiry is sent by the user themselves, or they exp
 
 ### With the Hostinger MCP
 
-If the hosting MCP isn't connected yet (check with `/mcp`), set it up now. Create an API token in the Hostinger panel under Account, API. The user enters the token themselves in the terminal, not in the chat:
-- Claude Code: `claude mcp add hostinger -s user -e APITOKEN=<token> -- npx -y hostinger-api-mcp`, on Windows `-- cmd /c npx -y hostinger-api-mcp`. Add it globally (`-s user`): an MCP added only for one project is sometimes not loaded on Windows, because VS Code opens the path with a lowercase drive letter.
-- Codex: `codex mcp add hostinger --env APITOKEN=<token> -- npx -y hostinger-api-mcp`
-- Then restart the agent, reopen the same chat and continue.
-
-1. If the domain is in a different Hostinger account than the hosting, move the domain to the main account first. Otherwise Hostinger demands a TXT ownership verification.
-2. Create the website: `hosting_websites_create` (domain, hosting order). Then query `hosting_websites_list-setups` until the status is "completed". That takes a few minutes. Don't repeat the write command.
-3. `python deploy/build.py`, copy the zip with a timestamp (`site_YYYYMMDD_HHMMSS.zip`), then `hosting_deploy-static-website` with the domain and the absolute path to the zip.
-4. Check DNS (`dns_records_list`). With Hostinger domains, `@` (ALIAS) and `www` (CNAME) point to the Hostinger CDN; then nothing needs to change. Don't touch mail records (MX) and subdomains.
-5. **Clear the cache:** `hosting_cache_clear-website`. Otherwise the CDN still serves the old site.
+Setup and deployment are in [7-hostinger.md](7-hostinger.md). Load it only when the site goes to Hostinger.
 
 ### Without an MCP
 
@@ -105,7 +96,7 @@ Upload `dist.zip` in the host's file manager into the web folder (usually `publi
 - HTTPS works, `http://` and `www.` redirect to the right address.
 - All files return status 200 (`curl -I` on the page, CSS, JS, fonts, images, robots.txt, llms.txt, sitemap.xml).
 - Blocked folders (`/tweak/` etc.) return 404.
-- `python tools/check_site.py https://domain.tld` for screenshots and console.
+- `python3 tools/check_site.py https://domain.tld` for screenshots and console.
 - Measure cookies and requests to third-party domains on the live site once more. The result must match step 2.
 - Check structured data with Google's Rich Results Test.
 - Check the preview image with the LinkedIn Post Inspector.

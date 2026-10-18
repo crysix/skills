@@ -43,12 +43,23 @@ npx impeccable install
 The program detects the installed agents and asks whether to install into the project or globally. In Claude Code, `claude plugin marketplace add pbakaus/impeccable` and `claude plugin install impeccable@impeccable` work as an alternative.
 On first use, impeccable downloads a program of its own. If that is blocked, context and instructions still work; only the automatic checks are missing.
 
-**Python and Playwright** (screenshots, measurements):
-```
-pip install playwright
-python -m playwright install chromium
-```
-On Windows, the installed Chrome works too (`channel="chrome"`); then the second command isn't needed.
+**Python and Playwright** (screenshots, measurements). First check whether it's already there: `python3 -c "import playwright"` (on Windows `python` instead of `python3`). If that works, nothing needs installing. Otherwise:
+
+- **Windows:**
+  ```
+  python -m pip install playwright
+  python -m playwright install chromium
+  ```
+  The installed Chrome works too (the scripts' `--chrome` option); then the second command isn't needed.
+- **macOS and Linux:** the system Python usually refuses `pip install` with the error "externally-managed-environment". Create a virtual environment once instead:
+  ```
+  python3 -m venv ~/.venvs/website-creator
+  ~/.venvs/website-creator/bin/python -m pip install playwright
+  ~/.venvs/website-creator/bin/python -m playwright install chromium
+  ```
+  If Chromium doesn't start on Linux because system libraries are missing, the user runs `sudo ~/.venvs/website-creator/bin/python -m playwright install-deps chromium` themselves.
+
+Record the Python command that works in the status file (`python3`, `python` or the full path to the venv's Python). Every `python3` in this skill's commands means that command.
 
 ## 4. Restart if needed
 

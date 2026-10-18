@@ -1,6 +1,6 @@
 """Local server for fine-tuning.
 
-Run in the project folder:  python tweak/server.py
+Run in the project folder:  python3 tweak/server.py
 Then in the browser:        http://localhost:8765/?tweak
 
 Serves the website and receives the values when "Save" is clicked.
@@ -26,6 +26,10 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if self.path != "/__tweak":
             self.send_error(404)
+            return
+        # Only accept saves from the panel itself, not from other sites open in the browser
+        if self.headers.get("Origin") not in (f"http://localhost:{PORT}", f"http://127.0.0.1:{PORT}"):
+            self.send_error(403)
             return
         length = int(self.headers.get("Content-Length", 0))
         data = json.loads(self.rfile.read(length) or b"{}")

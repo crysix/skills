@@ -1,6 +1,6 @@
 """Batched check run for a site, local or live.
 
-Usage:  python check_site.py http://localhost:8000 [--chrome] [--out site-check]
+Usage:  python3 check_site.py http://localhost:8000 [--chrome] [--out site-check] [--review .impeccable/review]
 
 One run does:
 - screenshots on desktop (1440) and mobile (390), each of the first screen and the full page
@@ -10,11 +10,14 @@ One run does:
 
 All results land in the --out folder (default: site-check/). Look at everything first,
 then fix all errors in one pass, then a second run.
+
+The full-page screenshots are also saved as desktop.png and mobile.png in the --review
+folder (default: .impeccable/review/), where impeccable's finish reviewer looks for them.
 """
 import os
 import sys
 
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError, sync_playwright
 
 DEVICES = [
     ("desktop", {"width": 1440, "height": 900}, False),
@@ -38,6 +41,18 @@ def arg(name, default):
     return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else default
 
 
+def open_page(page, url):
+    """Load the page and wait for the network to go quiet, but not forever.
+
+    Chat widgets, tracking and live connections keep some sites busy, so they never
+    reach "networkidle". After a short wait, the loaded page is checked anyway."""
+    page.goto(url, wait_until="load", timeout=60000)
+    try:
+        page.wait_for_load_state("networkidle", timeout=10000)
+    except PlaywrightTimeoutError:
+        print("Note: the network did not go quiet within 10 s, continuing with the loaded page.")
+
+
 def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -45,7 +60,9 @@ def main():
         raise SystemExit(__doc__)
     url = sys.argv[1]
     out = arg("--out", "site-check")
+    review = arg("--review", os.path.join(".impeccable", "review"))
     os.makedirs(out, exist_ok=True)
+    os.makedirs(review, exist_ok=True)
     problems = []
 
     with sync_playwright() as p:
@@ -60,7 +77,7 @@ def main():
             page.on("requestfailed", lambda r: failed.append(r.url))
             page.on("response", lambda r: failed.append(f"{r.status} {r.url}") if r.status >= 400 else None)
 
-            page.goto(url, wait_until="networkidle", timeout=60000)
+            open_page(page, url)
             page.wait_for_timeout(600)
             page.screenshot(path=f"{out}/{name}-top.png")
             height = page.evaluate("document.documentElement.scrollHeight")
@@ -71,6 +88,8 @@ def main():
             page.evaluate("window.scrollTo(0, 0)")
             page.wait_for_timeout(300)
             page.screenshot(path=f"{out}/{name}-full.png", full_page=True)
+            # At CSS pixel size, so the reviewer gets exactly 1440 and 390 wide captures
+            page.screenshot(path=os.path.join(review, f"{name}.png"), full_page=True, scale="css")
             info = page.evaluate(INFO)
             ctx.close()
 
@@ -96,7 +115,7 @@ def main():
                 problems.append(f"{name}: file failed: {f}")
         browser.close()
 
-    print(f"\nScreenshots in {out}/")
+    print(f"\nScreenshots in {out}/, review captures in {review}/ (desktop.png, mobile.png)")
     unique = list(dict.fromkeys(problems))
     if unique:
         print(f"\n{len(unique)} problem(s):")

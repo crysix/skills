@@ -1,6 +1,6 @@
 """Measures the colors and fonts of a live site.
 
-Usage:  python extract_brand.py https://example.com [--chrome]
+Usage:  python3 extract_brand.py https://example.com [--chrome]
 
 Loads the page, scrolls all the way through once (otherwise animated sections stay empty)
 and evaluates the computed styles of all visible elements. Colors are weighted by
@@ -12,7 +12,7 @@ and as brand.json in the current folder, plus a screenshot brand.png.
 import json
 import sys
 
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError, sync_playwright
 
 MEASURE = r"""
 () => {
@@ -51,6 +51,18 @@ MEASURE = r"""
 """
 
 
+def open_page(page, url):
+    """Load the page and wait for the network to go quiet, but not forever.
+
+    Chat widgets, tracking and live connections keep some sites busy, so they never
+    reach "networkidle". After a short wait, the loaded page is measured anyway."""
+    page.goto(url, wait_until="load", timeout=60000)
+    try:
+        page.wait_for_load_state("networkidle", timeout=10000)
+    except PlaywrightTimeoutError:
+        print("Note: the network did not go quiet within 10 s, continuing with the loaded page.")
+
+
 def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -61,7 +73,7 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(channel="chrome") if chrome else p.chromium.launch()
         page = browser.new_page(viewport={"width": 1440, "height": 900})
-        page.goto(url, wait_until="networkidle", timeout=60000)
+        open_page(page, url)
         height = page.evaluate("document.documentElement.scrollHeight")
         for y in range(0, height, 600):
             page.evaluate(f"window.scrollTo(0, {y})")

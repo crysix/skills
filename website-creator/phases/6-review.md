@@ -4,11 +4,13 @@ Goal: The site has been signed off by an independent reviewer, the user has set 
 
 ## 1. One batched check run
 
-`python tools/check_site.py http://localhost:8000` (script in the skill folder). In one run it does:
+`python3 tools/check_site.py http://localhost:8000` (script in the skill folder). In one run it does:
 - screenshots on desktop (1440 pixels) and phone (390 pixels), each of the first screen and the full page,
 - console errors and failed files,
 - a check for horizontal scrolling,
 - a list of all images without alt text and of all headings in order.
+
+It also saves the full-page screenshots as `.impeccable/review/desktop.png` and `mobile.png`, the files impeccable's finish reviewer expects in step 3.
 
 Look at all screenshots, collect all errors, **fix them in one pass**, then a second run as a check. Don't take new screenshots after every small fix.
 
@@ -18,7 +20,7 @@ Run `impeccable detect` once. Fix real errors. Hits that are a deliberate decisi
 
 ## 3. Independent sign-off
 
-In Claude Code, start the `impeccable-finish-reviewer` agent. It checks against the direction contract without knowing the conversation and gives a verdict: ship, fix, rebuild or recapture. On "fix", implement all points in one pass, take new screenshots and give them to the same reviewer for sign-off.
+In Claude Code, start the `impeccable-finish-reviewer` agent. It checks against the direction contract without knowing the conversation and gives a verdict: ship, fix, rebuild or recapture. Give it the original request and the user's confirmed answers, the paths to the site files, `.impeccable/review/desktop.png` and `mobile.png` from the check run, the direction contract, `PRODUCT.md` and the remaining `impeccable detect` findings from step 2. On "recapture", the screenshots are missing or broken: run the check again and hand them over once more. On "fix", implement all points in one pass, run the check again (it overwrites the same review files) and give them to the same reviewer for sign-off.
 
 In other agents, for example Codex, start a fresh subagent, or, if the agent has no subagents, a new session without history. It only gets `PRODUCT.md`, the direction contract and the screenshots, with the task of delivering an ordered list of the material flaws.
 
@@ -40,7 +42,7 @@ Describing spacing and positions in chat ("move the wave down a bit") takes many
      var t = document.createElement("script"); t.src = "tweak/tweak.js"; document.head.appendChild(t);
    }
    ```
-4. Start: `python tweak/server.py`, then open `http://localhost:8765/?tweak` and give the user the address.
+4. Start: `python3 tweak/server.py`, then open `http://localhost:8765/?tweak` and give the user the address.
 5. "Save" writes the values to `assets/css/tweaks.css`. Afterwards, move the values into `site.css` permanently and empty `tweaks.css`.
 6. The `tweak/` folder is never uploaded.
 

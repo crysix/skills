@@ -8,7 +8,7 @@ If there is no brand yet, go straight to section 1b.
 
 Never take colors and fonts from notes or estimate them from screenshots. Sources in this order:
 
-1. **Live site:** `python tools/extract_brand.py https://example.com` (script in the skill folder). It loads the page, scrolls all the way through once (otherwise animated sections stay empty) and weights the computed colors by area and frequency. Result: background, text, accents, fonts with weights.
+1. **Live site:** `python3 tools/extract_brand.py https://example.com` (script in the skill folder). It loads the page, scrolls all the way through once (otherwise animated sections stay empty) and weights the computed colors by area and frequency. Result: background, text, accents, fonts with weights.
 2. **Logo file:** read the colors from the SVG or PNG.
 3. **The user's brand files** (style guide, presentations).
 

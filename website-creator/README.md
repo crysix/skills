@@ -75,7 +75,7 @@ Other arguments: `/website-creator status` shows where the project stands, `/web
 
 - an AI agent like Claude Code or Codex
 - **impeccable**, a free design plugin. The skill sets it up with you at the start.
-- **Python with Playwright** (recommended) for screenshots, brand extraction and check runs. Also set up at the start.
+- **Python with Playwright** (recommended) for screenshots, brand extraction and check runs. Also set up at the start; on macOS and Linux in a virtual environment, because the system Python there usually refuses `pip install`.
 - **DataForSEO** account for the research (optional), set up in phase 2. New accounts get $1 of trial credit, often enough for one project. If you like, sign up through my [affiliate link](https://dataforseo.com/?aff=f743f28f-d5b8-4e34-a66d-5c99089b7ca7), at no extra cost to you.
 - **Web hosting** for the launch, set up in phase 7. A Hostinger MCP makes deployment possible straight from the agent; without it, you upload a zip file.
 
@@ -103,7 +103,7 @@ Copy comes before design, so the layout is built for real content instead of pla
 
 - **Nothing invented.** No made-up quotes, numbers, awards or promises like "reply within 24 hours". Missing facts become open questions.
 - **The brand is measured, not guessed.** Colors and fonts come from your live site, logo or brand files.
-- **No generic AI look.** Seven design directions, a random draw against the obvious choice, and an independent reviewer at the end.
+- **No generic AI look.** Several design directions from impeccable, a random draw against the obvious choice, and an independent reviewer at the end.
 - **Copy without an AI ring.** [writing-rules.md](writing-rules.md) takes out buzzwords, dashes, groups of three and the other usual tells.
 - **Credentials never in project files.** You enter API keys and tokens yourself, in your agent's personal configuration.
 - **Nothing goes live without your OK.** Deployment, DNS changes and test submissions only after you confirm.
@@ -123,7 +123,8 @@ website-creator/
 ├── SKILL.md              Process, rules and tools for the agent
 ├── README.md             This file
 ├── writing-rules.md      Rules for copy without an AI ring
-├── phases/               One file per phase, loaded only when that phase is up
+├── phases/               One file per phase, loaded only when that phase is up,
+│                         plus setup files for DataForSEO, cookies and terms, Hostinger
 ├── templates/            Status file, robots.txt, llms.txt, sitemap.xml, .htaccess,
 │                         structured data, build script, form script, PHP form receiver,
 │                         notification email, preview image, tweak panel
