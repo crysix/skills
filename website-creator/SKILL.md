@@ -78,7 +78,7 @@ Each tool is set up where it's needed: impeccable and Playwright in [phase 0](ph
 ## Other files
 
 - [writing-rules.md](writing-rules.md): rules for website copy without an AI ring.
-- [countries/](countries/): `de.md` for Germany (default), `other.md` for building a profile for any other country.
+- [countries/](countries/): `de.md` for Germany (default), `at.md` for Austria, `ch.md` for Switzerland, `other.md` for building a profile for any other country.
 - [templates/](templates/): status file, robots.txt, llms.txt, sitemap.xml, .htaccess, structured data, build script, form script, form receiver in PHP, notification email, preview image, tweak panel.
 - [tools/](tools/): `extract_brand.py` (measure colors and fonts of a live site) and `check_site.py` (batched check run with screenshots).
 

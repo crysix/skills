@@ -54,8 +54,9 @@ Used in phase 7, step 2, as soon as contracts are concluded through the site.
 - **When selling to consumers**, these obligations matter more than the terms themselves:
   - mandatory information before the order (Art. 246a EGBGB) and prices including VAT (Price Indication Ordinance, PAngV)
   - cancellation policy and model withdrawal form (Annex 1 and 2 to Art. 246a EGBGB)
+  - withdrawal function for every consumer contract concluded through the site, since 19 June 2026 (§ 356a BGB): a button labeled "Vertrag widerrufen", then a step where the consumer enters or confirms their name, the contract and the email for the confirmation, and a button labeled "Widerruf bestätigen". Then an acknowledgement of receipt goes out right away on a durable medium (email) with the content, date and time. The function must be reachable from every page during the withdrawal period, stand out from the other footer links and work without a login. The cancellation policy says where to find it. A site that only collects inquiries doesn't need it.
   - order button labeled "zahlungspflichtig bestellen" ("order with obligation to pay") or something equally clear (§ 312j BGB)
-  - cancellation button for subscriptions and continuing contracts (§ 312k BGB)
+  - cancellation button for subscriptions and continuing contracts (§ 312k BGB): "Verträge hier kündigen", then a confirmation page with "jetzt kündigen". Subscriptions need both this and the withdrawal function.
   - notice on consumer dispute resolution (§ 36 VSBG), mandatory for more than ten employees
   - accessibility under the Accessibility Strengthening Act (BFSG, since 28 June 2025); micro-enterprises providing services are exempt
 
@@ -66,5 +67,6 @@ Who checks legal drafts before use: a lawyer, the chamber of commerce (IHK), or 
 ## Official sources
 
 - Gesetze im Internet (gesetze-im-internet.de): TDDDG, DDG, BGB, EGBGB, PAngV, VSBG, BFSG
+- Withdrawal function: BGBl. 2026 I Nr. 28 (https://www.recht.bund.de/bgbl/1/2026/28/VO.html), current text at https://www.gesetze-im-internet.de/bgb/__356a.html
 - German Data Protection Conference, guidance for providers of digital services (November 2024): https://www.bfdi.bund.de/SharedDocs/Downloads/DE/DSK/Orientierungshilfen/OH_Digitale-Dienste.pdf
 - DPMA register: https://register.dpma.de

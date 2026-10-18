@@ -45,9 +45,9 @@ The rules apply in any language. The examples are in English; the notes on Germa
 - No placeholder text ("[insert name]") in finished copy.
 
 On German pages:
-- Real umlauts and ß, never written as ae, oe, ue or ss.
+- Real umlauts and ß, never written as ae, oe, ue or ss. Exception: Swiss pages never use ß, always ss ([countries/ch.md](countries/ch.md)).
 - Sie or du throughout, never mixed.
-- German quotation marks („so"), not mixed with straight ones.
+- German quotation marks („so"), not mixed with straight ones. Swiss pages use guillemets («so»).
 
 ## Delicate sentences
 
