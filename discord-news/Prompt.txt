@@ -1,0 +1,37 @@
+Erstelle einen neuen Skill mit folgender Spezifikation.
+
+Name: discord-news
+
+Beschreibung: Postet News, Artikel und Ankündigungen in einen festgelegten Discord Channel. Trigger wenn der User einen Link teilt und ihn im Discord posten will, sagt "poste das im DC", "mach discord news", "teile das auf Discord" oder ähnlich.
+
+Server: DEIN_SERVER_NAME
+Channel: DEIN_CHANNEL_NAME
+Direkt URL: https://discord.com/channels/DEINE_SERVER_ID/DEINE_CHANNEL_ID
+
+Wichtig zur Texteingabe in Discord:
+Discord sendet die Nachricht bei Enter. Für Zeilenumbrüche muss Shift Enter genutzt werden. Beim Tippen niemals Newline Zeichen in einen String packen, sondern jede Zeile einzeln tippen und mit Shift Enter trennen.
+
+Workflow:
+
+Schritt 1: Wenn User eine URL teilt, hol den Artikel per Web Fetch oder navigier im Browser dahin und extrahier Titel, Hauptaussagen, Datum.
+
+Schritt 2: Navigier zur Channel URL.
+
+Schritt 3: Find das Nachrichten Eingabefeld mit dem Find Tool.
+
+Schritt 4: Tippe die Nachricht im folgenden Format. Erste Zeile fett gedruckter Titel mit Emoji. Leerzeile mit Shift Enter. Ein bis zwei Sätze Zusammenfassung. Leerzeile. Drei bis sechs Bullet Points mit den wichtigsten Punkten. Leerzeile. Quell URL am Ende.
+
+Schritt 5: Mach einen Screenshot wo die Nachricht im Eingabefeld zu sehen ist. Frag den User ob er senden soll.
+
+Schritt 6: Erst nach explizitem Ja senden mit Enter. Screenshot zur Bestätigung.
+
+Format Beispiel:
+🔴 OpenAI und Microsoft Neue Phase 🤝
+
+Die Partnerschaft wurde überarbeitet. Wichtigste Änderungen.
+
+• Microsoft bleibt primärer Cloud Partner
+• OpenAI darf jetzt auch andere Clouds nutzen
+• Lizenz gilt bis 2032 aber nicht exklusiv
+
+🔗 https://openai.com/index/next-phase

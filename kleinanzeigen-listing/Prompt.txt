@@ -1,0 +1,19 @@
+Erstelle einen neuen Skill mit folgender Spezifikation.
+
+Name: kleinanzeigen-listing
+
+Beschreibung: Generiert eine vollständige Kleinanzeige für Kleinanzeigen.de aus einem hochgeladenen Foto. Trigger wenn der User ein Foto hochlädt und eine Anzeige erstellen will, oder Phrasen wie "mach eine Kleinanzeige", "ich will das verkaufen", "Anzeigentext schreiben" verwendet.
+
+Workflow:
+
+Schritt 1: Wenn ein Bild da ist, analysiere den Artikel. Erkenne Marke, Modell, Zustand, Material, Größe, besondere Merkmale, Mängel. Wenn kein Bild da ist, frag nach.
+
+Schritt 2: Stelle drei Rückfragen in einer Nachricht. Kaufjahr oder Alter, Originalpreis, Zubehör und Originalverpackung. Wenn der User mit "weiß nicht" antwortet, fahr ohne weiter.
+
+Schritt 3: Berechne den Verkaufspreis vom Originalpreis abhängig vom Zustand. Sehr gut erhalten minus 20 Prozent. Gut erhalten minus 30 Prozent. Schlecht erhalten minus 50 Prozent. Defekt minus 80 Prozent. Wenn kein Originalpreis bekannt ist, schätze den Neupreis und sag dass es eine Schätzung ist.
+
+Schritt 4: Generiere die Anzeige in einem Copy Paste Block mit Trennlinien. Titel maximal 65 Zeichen, klar und ohne Clickbait. Beschreibung in drei Absätzen, Absatz 1 was ist es und Zustand ehrlich, Absatz 2 warum verkauft und Besonderheiten, Absatz 3 Versand und Privatverkauf Hinweis. Preis als VB Preis mit kurzer Berechnung. Kategorie für Kleinanzeigen.de.
+
+Tonalität: Sachlich, freundlich, ohne Superlative, keine Smileys, kein Hallo zusammen. Käufer auf Kleinanzeigen sind skeptisch gegen Marketing Sprache.
+
+Erstelle den Skill und speichere ihn.
