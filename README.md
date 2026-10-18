@@ -8,7 +8,6 @@ My personal collection of skills for AI agents like Claude Code and Codex. Nothi
 |---|---|
 | [brainstorm](brainstorm/) | Runs a structured brainstorming session with proven ideation techniques |
 | [discord-news](discord-news/) | Summarizes an article and posts it to a Discord channel via Claude in Chrome, after you confirm |
-| [grill-me](grill-me/) | Grills you about a plan or design, one question at a time, until every decision is settled |
 | [kleinanzeigen-listing](kleinanzeigen-listing/) | Turns a photo into a ready-to-paste Kleinanzeigen.de listing with a price suggestion |
 | [motion-video](motion-video/) | Builds short explainer or ad videos with motion graphics, AI cutout images, voiceover and sound |
 

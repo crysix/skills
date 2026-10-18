@@ -1,125 +1,127 @@
 ---
 name: kleinanzeigen-listing
-description: Generiert eine vollständige, verkaufsfertige Kleinanzeige für Kleinanzeigen.de aus einem Foto oder einer Artikelbeschreibung. Immer verwenden wenn der User ein Foto eines Gegenstands hochlädt und verkaufen möchte, Phrasen wie "mach eine Kleinanzeige", "ich will das verkaufen", "Anzeigentext schreiben", "Anzeige erstellen", "bei Kleinanzeigen einstellen" oder "eBay Kleinanzeigen" verwendet — auch wenn kein Bild vorhanden ist. Direkt starten, nicht fragen ob der Skill verwendet werden soll.
+description: Generates a complete, ready-to-post listing for Kleinanzeigen.de from a photo or a description of an item. Always use this when the user uploads a photo of an item and wants to sell it, or uses phrases like "make a Kleinanzeige", "I want to sell this", "write a listing", "create an ad", "list this on Kleinanzeigen" or "eBay Kleinanzeigen" (or German equivalents such as "mach eine Kleinanzeige", "ich will das verkaufen", "Anzeigentext schreiben", "Anzeige erstellen", "bei Kleinanzeigen einstellen"), even if there is no image. Start right away; do not ask whether the skill should be used.
 ---
 
-# Kleinanzeigen-Listing Generator
+# Kleinanzeigen Listing Generator
 
-Erstellt professionelle, ehrliche Kleinanzeigen für Kleinanzeigen.de. Kein Marketing-Sprech, keine Übertreibungen — Käufer auf Kleinanzeigen sind skeptisch.
+Creates professional, honest listings for Kleinanzeigen.de. No marketing speak, no exaggeration: buyers on Kleinanzeigen are skeptical.
 
----
-
-## Schritt 1: Artikel analysieren
-
-**Wenn ein Bild vorhanden ist:**
-Analysiere den Artikel systematisch:
-- **Marke & Modell**: Erkenne Logos, Aufdrucke, Typenschilder
-- **Kategorie**: z.B. Elektronik, Möbel, Kleidung, Sport, Haushalt
-- **Zustand**: Sehr gut erhalten / Gut erhalten / Schlecht erhalten / Defekt
-  - Sehr gut erhalten = kaum Gebrauchsspuren, wie neu
-  - Gut erhalten = normale Gebrauchsspuren, voll funktionsfähig
-  - Schlecht erhalten = sichtbare Mängel, aber funktionsfähig
-  - Defekt = nicht oder eingeschränkt funktionsfähig
-- **Material, Farbe, Größe** (wenn erkennbar)
-- **Besondere Merkmale**: Ausstattung, Extras, Besonderheiten
-- **Sichtbare Mängel**: Kratzer, Risse, Flecken — ehrlich benennen
-
-**Wenn kein Bild vorhanden ist:**
-Frage kurz nach: "Schick mir ein Foto des Artikels, dann erstelle ich die Anzeige. Alternativ beschreib mir kurz was du verkaufen möchtest."
+**Language:** Talk to the user in their language. The listing itself (title, description and category) is always written in German, because it is posted on Kleinanzeigen.de.
 
 ---
 
-## Schritt 2: Drei Rückfragen in einer Nachricht
+## Step 1: Analyze the item
 
-Stelle **genau diese drei Fragen** in einer einzigen Nachricht, kompakt:
+**If there is an image:**
+Analyze the item systematically:
+- **Brand & model**: recognize logos, prints, type plates
+- **Category**: e.g. electronics, furniture, clothing, sports, household
+- **Condition**: one of the four levels below
+  - Like new (*Sehr gut erhalten*) = barely any signs of use
+  - Good (*Gut erhalten*) = normal signs of use, fully functional
+  - Poor (*Schlecht erhalten*) = visible defects, but functional
+  - Defective (*Defekt*) = not functional or only partly functional
+- **Material, color, size** (if recognizable)
+- **Notable features**: equipment, extras, special details
+- **Visible defects**: scratches, cracks, stains; name them honestly
+
+**If there is no image:**
+Ask briefly, in the user's language: "Send me a photo of the item and I'll create the listing. Or just describe what you want to sell."
+
+---
+
+## Step 2: Three follow-up questions in one message
+
+Ask **exactly these three questions** in a single, compact message, in the user's language:
 
 ```
-Um die Anzeige zu vervollständigen, kurz drei Fragen:
+To complete the listing, three quick questions:
 
-1. Wann ungefähr gekauft / wie alt ist der Artikel?
-2. Was hat er neu gekostet (Originalpreis)?
-3. Gibt es Zubehör oder Originalverpackung dabei?
+1. Roughly when did you buy it / how old is the item?
+2. What did it cost new (original price)?
+3. Are any accessories or the original packaging included?
 
-Falls du einzelnes nicht weißt — kein Problem, einfach "weiß nicht" schreiben.
+If you don't know something, no problem, just write "don't know".
 ```
 
-Wenn der User mit "weiß nicht" antwortet oder Angaben fehlen: weitermachen ohne diese Information.
+If the user answers "don't know" or information is missing, continue without it.
 
 ---
 
-## Schritt 3: Verkaufspreis berechnen
+## Step 3: Calculate the asking price
 
-**Mit Originalpreis:**
-| Zustand | Abzug vom Neupreis |
+**With the original price:**
+| Condition | Deduction from the original price |
 |---|---|
-| Sehr gut erhalten | − 20 % |
-| Gut erhalten | − 30 % |
-| Schlecht erhalten | − 50 % |
-| Defekt | − 80 % |
+| Like new (*Sehr gut erhalten*) | − 20 % |
+| Good (*Gut erhalten*) | − 30 % |
+| Poor (*Schlecht erhalten*) | − 50 % |
+| Defective (*Defekt*) | − 80 % |
 
-Runde auf glatte Beträge (z.B. 45 €, nicht 47,50 €).
+Round to even amounts (e.g. 45 €, not 47.50 €).
 
-**Ohne Originalpreis:**
-Schätze den aktuellen Neupreis anhand von Marke/Modell/Kategorie. Weise klar darauf hin: *(Neupreis geschätzt, da nicht bekannt)*
+**Without the original price:**
+Estimate the current retail price from brand, model and category. Point this out clearly: *(original price estimated, since unknown)*
 
-**Hinweis:** Der berechnete Preis ist ein Vorschlag als VB (Verhandlungsbasis). Der User kann ihn anpassen.
+**Note:** The calculated price is a suggestion, given as VB (*Verhandlungsbasis*, negotiable). The user can adjust it.
 
 ---
 
-## Schritt 4: Anzeige generieren
+## Step 4: Generate the listing
 
-Ausgabe als Copy-Paste-Block mit Trennlinien:
+Output it as a copy-paste block with divider lines. Labels and the price calculation are for the user; everything that goes into the listing is in German:
 
 ```
 ════════════════════════════════════════
-KLEINANZEIGE – BEREIT ZUM EINSTELLEN
+KLEINANZEIGE – READY TO POST
 ════════════════════════════════════════
 
-TITEL (max. 65 Zeichen):
-[Artikel] – [Marke/Modell] – [Zustand kurz]
+TITLE (max. 65 characters):
+[Item] – [Brand/model] – [short condition]
 
-BESCHREIBUNG:
-[Absatz 1 – Was ist es & Zustand]
-Sachliche Beschreibung des Artikels. Zustand ehrlich angeben inkl. Mängel. Keine Superlative.
+DESCRIPTION:
+[Paragraph 1 – what it is & condition]
+Factual description of the item. State the condition honestly, including defects. No superlatives.
 
-[Absatz 2 – Besonderheiten & Verkaufsgrund]
-Warum wird verkauft (optional: "wird nicht mehr gebraucht", "Upgrade", o.ä.). Enthaltenes Zubehör, Originalverpackung.
+[Paragraph 2 – details & reason for selling]
+Why it is being sold (optional: "wird nicht mehr gebraucht", "Upgrade" or similar). Included accessories, original packaging.
 
-[Absatz 3 – Abwicklung]
+[Paragraph 3 – handling]
 Abholung bevorzugt. Versand möglich gegen Aufpreis (Käufer trägt Versandkosten). Privatverkauf – keine Garantie, keine Rücknahme.
 
-PREIS:
+PRICE:
 XX € VB
-(Neupreis: XX € → Abzug XX % für Zustand "[Zustand]")
+(original price: XX € → minus XX % for condition "[German condition]")
 
-KATEGORIE:
-[Passende Hauptkategorie auf Kleinanzeigen.de]
+CATEGORY:
+[Matching main category on Kleinanzeigen.de]
 
 ════════════════════════════════════════
 ```
 
 ---
 
-## Tonalität & Regeln
+## Tone & rules
 
-- **Sachlich und direkt** — keine Adjektive wie "traumhaft", "top", "mega"
-- **Kein "Hallo zusammen"**, keine Smileys, keine Ausrufezeichen
-- **Mängel nicht verschweigen** — das schützt vor schlechten Bewertungen
-- **Keine Floskeln** wie "Nur wegen Umzug", außer es ist wahr
-- **Privatverkauf-Hinweis immer einbauen** — rechtlich wichtig
-- **Versand**: Wenn unklar, Standard-Formulierung verwenden
+- **Factual and direct**: no adjectives like "traumhaft", "top" or "mega"
+- **No "Hallo zusammen"**, no smileys, no exclamation marks
+- **Never hide defects**: this protects against bad reviews
+- **No stock phrases** like "Nur wegen Umzug" (only selling because of a move) unless it is true
+- **Always include the private-sale notice**: legally important
+- **Shipping**: if unclear, use the standard wording from paragraph 3
 
 ---
 
-## Kategorien-Referenz (Kleinanzeigen.de)
+## Category reference (Kleinanzeigen.de)
 
-Häufige Hauptkategorien:
-- Elektronik → Handys, Laptops, TV, Audio
-- Möbel & Wohnen → Sofas, Tische, Lampen
-- Kleidung & Accessoires → nach Zielgruppe
-- Sport & Camping → Fahrräder, Fitnessgeräte
-- Haushalt → Küchengeräte, Haushaltsgeräte
-- Garten & Heimwerken → Werkzeug, Pflanzen
-- Spielzeug & Kinderbedarf → Alter angeben
-- Auto & Zubehör → KFZ-Teile, Zubehör
-- Freizeit → Bücher, Musik, Sammler
+Common main categories (use the German names as they appear on the site):
+- Elektronik (electronics) → phones, laptops, TV, audio
+- Möbel & Wohnen (furniture & living) → sofas, tables, lamps
+- Kleidung & Accessoires (clothing & accessories) → by target group
+- Sport & Camping (sports & camping) → bicycles, fitness equipment
+- Haushalt (household) → kitchen appliances, household appliances
+- Garten & Heimwerken (garden & DIY) → tools, plants
+- Spielzeug & Kinderbedarf (toys & children's items) → state the age
+- Auto & Zubehör (car & accessories) → car parts, accessories
+- Freizeit (leisure) → books, music, collectibles

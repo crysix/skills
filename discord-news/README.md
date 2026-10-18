@@ -35,24 +35,25 @@ The partnership has been fundamentally restructured. Here's what's changing.
 
 ## Installation
 
-### 1. Download the skill file
+### 1. Get the skill
 
-Download `discord-news.skill` from this repository.
+Download the `discord-news` folder from this repository (the skill itself is just `SKILL.md`).
 
 ### 2. Import into Claude
 
-Go to [claude.ai](https://claude.ai) → **Skills** → **Import skill** → select `discord-news.skill`.
+In [claude.ai](https://claude.ai), open the **Skills** settings and upload the skill (as a ZIP of the folder). In Claude Code, copy the folder to `~/.claude/skills/discord-news/`.
 
 ### 3. Configure the skill
 
-After importing, open the skill and edit `SKILL.md`. Replace the placeholders under the **Konfiguration** section with your own values:
+Edit `SKILL.md` and replace the placeholders under the **Configuration** section with your own values:
 
 | Placeholder | Replace with | Example |
 |---|---|---|
-| `DEIN_SERVER_NAME` | Your Discord server name | `milkycode` |
-| `DEIN_CHANNEL_NAME` | Target channel name | `#news` |
-| `DEINE_SERVER_ID` | Server ID from the channel URL | `123456789012345678` |
-| `DEINE_CHANNEL_ID` | Channel ID from the channel URL | `987654321098765432` |
+| `YOUR_SERVER_NAME` | Your Discord server name | `milkycode` |
+| `YOUR_CHANNEL_NAME` | Target channel name | `#news` |
+| `YOUR_SERVER_ID` | Server ID from the channel URL | `123456789012345678` |
+| `YOUR_CHANNEL_ID` | Channel ID from the channel URL | `987654321098765432` |
+| `YOUR_POST_LANGUAGE` | Language the posts are written in | `English` |
 
 **How to find your Server ID and Channel ID:**
 
@@ -133,7 +134,7 @@ Claude will wait and let you know. Just log in and the workflow continues automa
 Claude will ask if you want to paste the content manually. Just copy the article text into the chat and Claude will work with that.
 
 **I want to post to a different channel.**
-Open `SKILL.md` and update the channel URL and names under the **Konfiguration** section.
+Open `SKILL.md` and update the channel URL and names under the **Configuration** section.
 
 ---
 

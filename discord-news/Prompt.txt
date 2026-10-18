@@ -1,37 +1,37 @@
-Erstelle einen neuen Skill mit folgender Spezifikation.
+Create a new skill with the following specification.
 
 Name: discord-news
 
-Beschreibung: Postet News, Artikel und Ankündigungen in einen festgelegten Discord Channel. Trigger wenn der User einen Link teilt und ihn im Discord posten will, sagt "poste das im DC", "mach discord news", "teile das auf Discord" oder ähnlich.
+Description: Posts news, articles and announcements to a configured Discord channel. Trigger when the user shares a link and wants to post it on Discord, says "post this to DC", "make discord news", "share this on Discord" or similar.
 
-Server: DEIN_SERVER_NAME
-Channel: DEIN_CHANNEL_NAME
-Direkt URL: https://discord.com/channels/DEINE_SERVER_ID/DEINE_CHANNEL_ID
+Server: YOUR_SERVER_NAME
+Channel: YOUR_CHANNEL_NAME
+Direct URL: https://discord.com/channels/YOUR_SERVER_ID/YOUR_CHANNEL_ID
 
-Wichtig zur Texteingabe in Discord:
-Discord sendet die Nachricht bei Enter. Für Zeilenumbrüche muss Shift Enter genutzt werden. Beim Tippen niemals Newline Zeichen in einen String packen, sondern jede Zeile einzeln tippen und mit Shift Enter trennen.
+Important for typing in Discord:
+Discord sends the message on Enter. Line breaks require Shift+Enter. When typing, never put newline characters into a string; type each line separately and separate the lines with Shift+Enter.
 
 Workflow:
 
-Schritt 1: Wenn User eine URL teilt, hol den Artikel per Web Fetch oder navigier im Browser dahin und extrahier Titel, Hauptaussagen, Datum.
+Step 1: When the user shares a URL, fetch the article via web fetch or navigate to it in the browser and extract the title, main points and date.
 
-Schritt 2: Navigier zur Channel URL.
+Step 2: Navigate to the channel URL.
 
-Schritt 3: Find das Nachrichten Eingabefeld mit dem Find Tool.
+Step 3: Find the message input field with the find tool.
 
-Schritt 4: Tippe die Nachricht im folgenden Format. Erste Zeile fett gedruckter Titel mit Emoji. Leerzeile mit Shift Enter. Ein bis zwei Sätze Zusammenfassung. Leerzeile. Drei bis sechs Bullet Points mit den wichtigsten Punkten. Leerzeile. Quell URL am Ende.
+Step 4: Type the message in the following format. First line: a bold title with an emoji. Blank line with Shift+Enter. One or two sentences of summary. Blank line. Three to six bullet points with the most important points. Blank line. Source URL at the end.
 
-Schritt 5: Mach einen Screenshot wo die Nachricht im Eingabefeld zu sehen ist. Frag den User ob er senden soll.
+Step 5: Take a screenshot that shows the message in the input field. Ask the user whether to send it.
 
-Schritt 6: Erst nach explizitem Ja senden mit Enter. Screenshot zur Bestätigung.
+Step 6: Only after an explicit yes, send with Enter. Take a screenshot as confirmation.
 
-Format Beispiel:
-🔴 OpenAI und Microsoft Neue Phase 🤝
+Format example:
+🔴 OpenAI and Microsoft: A New Phase 🤝
 
-Die Partnerschaft wurde überarbeitet. Wichtigste Änderungen.
+The partnership has been restructured. The most important changes.
 
-• Microsoft bleibt primärer Cloud Partner
-• OpenAI darf jetzt auch andere Clouds nutzen
-• Lizenz gilt bis 2032 aber nicht exklusiv
+• Microsoft remains the primary cloud partner
+• OpenAI may now use other clouds as well
+• The license runs until 2032 but is not exclusive
 
 🔗 https://openai.com/index/next-phase

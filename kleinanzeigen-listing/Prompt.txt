@@ -1,19 +1,19 @@
-Erstelle einen neuen Skill mit folgender Spezifikation.
+Create a new skill with the following specification.
 
 Name: kleinanzeigen-listing
 
-Beschreibung: Generiert eine vollständige Kleinanzeige für Kleinanzeigen.de aus einem hochgeladenen Foto. Trigger wenn der User ein Foto hochlädt und eine Anzeige erstellen will, oder Phrasen wie "mach eine Kleinanzeige", "ich will das verkaufen", "Anzeigentext schreiben" verwendet.
+Description: Generates a complete listing for Kleinanzeigen.de from an uploaded photo. Trigger when the user uploads a photo and wants to create a listing, or uses phrases like "make a Kleinanzeige", "I want to sell this", "write a listing" (or German: "mach eine Kleinanzeige", "ich will das verkaufen", "Anzeigentext schreiben").
 
 Workflow:
 
-Schritt 1: Wenn ein Bild da ist, analysiere den Artikel. Erkenne Marke, Modell, Zustand, Material, Größe, besondere Merkmale, Mängel. Wenn kein Bild da ist, frag nach.
+Step 1: If there is an image, analyze the item. Recognize brand, model, condition, material, size, notable features and defects. If there is no image, ask for one.
 
-Schritt 2: Stelle drei Rückfragen in einer Nachricht. Kaufjahr oder Alter, Originalpreis, Zubehör und Originalverpackung. Wenn der User mit "weiß nicht" antwortet, fahr ohne weiter.
+Step 2: Ask three follow-up questions in one message: year of purchase or age, original price, accessories and original packaging. If the user answers "don't know", continue without it.
 
-Schritt 3: Berechne den Verkaufspreis vom Originalpreis abhängig vom Zustand. Sehr gut erhalten minus 20 Prozent. Gut erhalten minus 30 Prozent. Schlecht erhalten minus 50 Prozent. Defekt minus 80 Prozent. Wenn kein Originalpreis bekannt ist, schätze den Neupreis und sag dass es eine Schätzung ist.
+Step 3: Calculate the asking price from the original price depending on condition. Like new minus 20 percent. Good minus 30 percent. Poor minus 50 percent. Defective minus 80 percent. If no original price is known, estimate the retail price and say that it is an estimate.
 
-Schritt 4: Generiere die Anzeige in einem Copy Paste Block mit Trennlinien. Titel maximal 65 Zeichen, klar und ohne Clickbait. Beschreibung in drei Absätzen, Absatz 1 was ist es und Zustand ehrlich, Absatz 2 warum verkauft und Besonderheiten, Absatz 3 Versand und Privatverkauf Hinweis. Preis als VB Preis mit kurzer Berechnung. Kategorie für Kleinanzeigen.de.
+Step 4: Generate the listing in a copy-paste block with divider lines. Title at most 65 characters, clear and without clickbait. Description in three paragraphs: paragraph 1 what it is and its condition, honestly; paragraph 2 why it is sold and special details; paragraph 3 shipping and the private-sale notice. Price as a VB price with a short calculation. Category for Kleinanzeigen.de. The listing text itself is in German.
 
-Tonalität: Sachlich, freundlich, ohne Superlative, keine Smileys, kein Hallo zusammen. Käufer auf Kleinanzeigen sind skeptisch gegen Marketing Sprache.
+Tone: factual, friendly, no superlatives, no smileys, no "Hallo zusammen". Buyers on Kleinanzeigen are skeptical of marketing language.
 
-Erstelle den Skill und speichere ihn.
+Create the skill and save it.

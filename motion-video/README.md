@@ -2,8 +2,6 @@
 
 A skill that lets Claude Code (or Codex and other agents that load skills) produce short explainer videos and ad spots on its own. The motion graphics are built in code, characters and objects are added as AI-generated cutout images, and an ElevenLabs voiceover plus sound design complete the video. The result is a finished MP4.
 
-Developed and maintained by **milkycode GmbH**: [https://www.milkycode.com](https://www.milkycode.com)
-
 ---
 
 ## At a glance
@@ -210,9 +208,3 @@ motion-video/
 ├── .gitignore       Keeps preferences.md out of the repo
 └── preferences.md   Created on the first run (route, variable names, optional brand settings)
 ```
-
----
-
-## Maintainer
-
-Developed and maintained by **milkycode GmbH**: [https://www.milkycode.com](https://www.milkycode.com)

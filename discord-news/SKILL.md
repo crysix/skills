@@ -1,131 +1,132 @@
 ---
 name: discord-news
-description: Postet News, Artikel und Ankündigungen in einen festgelegten Discord Channel per Browser-Automatisierung. Immer verwenden wenn der User einen Link teilt und ihn auf Discord posten will, sagt "poste das im DC", "mach discord news", "teile das auf Discord", "poste das in den Channel", "Discord Nachricht", "DC post" oder ähnlich — auch wenn nur eine URL geteilt wird ohne weiteren Kontext. Direkt starten, nicht fragen ob der Skill verwendet werden soll.
+description: Posts news, articles and announcements to a configured Discord channel via browser automation. Always use this when the user shares a link and wants it posted on Discord, or says things like "post this to DC", "make a discord news post", "share this on Discord", "post this in the channel", "Discord message", "DC post" (or German equivalents such as "poste das im DC", "mach discord news", "teile das auf Discord"), even if only a URL is shared without further context. Start right away; do not ask whether the skill should be used.
 ---
 
 # Discord News Skill
 
-Postet aufbereitete News-Nachrichten in den konfigurierten Discord Channel via Browser-Automatisierung.
+Posts formatted news messages to the configured Discord channel via browser automation.
 
-## Konfiguration
+## Configuration
 
-- **Server:** DEIN_SERVER_NAME
-- **Channel:** DEIN_CHANNEL_NAME
-- **Channel-URL:** https://discord.com/channels/DEINE_SERVER_ID/DEINE_CHANNEL_ID
+- **Server:** YOUR_SERVER_NAME
+- **Channel:** YOUR_CHANNEL_NAME
+- **Channel URL:** https://discord.com/channels/YOUR_SERVER_ID/YOUR_CHANNEL_ID
+- **Post language:** YOUR_POST_LANGUAGE (e.g. English or German)
 
 ---
 
 ## Workflow
 
-### Schritt 1: Artikel extrahieren
+### Step 1: Extract the article
 
-Hol den Inhalt des geteilten Links per `web_fetch` oder navigiere im Browser zur URL. Extrahiere:
-- **Titel** des Artikels
-- **Datum** der Veröffentlichung
-- **Hauptaussagen** (2–3 Sätze)
-- **Wichtigste Punkte** (3–6 Bullet Points)
-- **Original-URL** (für den Link am Ende)
+Fetch the content of the shared link via `web_fetch`, or navigate to the URL in the browser. Extract:
+- the article's **title**
+- the **publication date**
+- the **main message** (2–3 sentences)
+- the **key points** (3–6 bullet points)
+- the **original URL** (for the link at the end)
 
-### Schritt 2: Zum Discord Channel navigieren
+### Step 2: Navigate to the Discord channel
 
-Navigiere zur Channel-URL:
+Navigate to the channel URL:
 ```
-https://discord.com/channels/DEINE_SERVER_ID/DEINE_CHANNEL_ID
-```
-
-Warte bis Discord vollständig geladen ist. Falls ein Login erforderlich ist, informiere den User und warte.
-
-### Schritt 3: Eingabefeld finden
-
-Nutze das `find`-Tool mit einer natürlichsprachigen Beschreibung wie:
-- „Nachrichteneingabefeld im Discord Channel"
-- „Textfeld zum Schreiben einer Nachricht"
-
-Klicke das Feld an, um es zu fokussieren.
-
-### Schritt 4: Nachricht tippen
-
-> ⚠️ **KRITISCH: Zeilenumbrüche in Discord**
-> Discord sendet die Nachricht bei `Enter`. Für Zeilenumbrüche **muss `Shift+Enter`** verwendet werden.
-> **Niemals** `\n` in einen String packen — jede Zeile einzeln tippen und mit `Shift+Enter` abschließen.
-
-Tippe die Nachricht **zeilenweise** im folgenden Format:
-
-```
-[Emoji] **Fetter Titel** [optionales Emoji]
-[Shift+Enter]
-[Shift+Enter]
-Ein bis zwei Sätze Zusammenfassung des Artikels.
-[Shift+Enter]
-[Shift+Enter]
-• Wichtigster Punkt 1
-[Shift+Enter]
-• Wichtigster Punkt 2
-[Shift+Enter]
-• Wichtigster Punkt 3
-[Shift+Enter]
-[ggf. weitere Bullet Points]
-[Shift+Enter]
-[Shift+Enter]
-🔗 https://original-url.de/artikel
+https://discord.com/channels/YOUR_SERVER_ID/YOUR_CHANNEL_ID
 ```
 
-**Emoji-Auswahl** (passend zum Thema wählen):
-- 🔴 Breaking News / Wichtige Meldung
-- 🤖 KI / Tech
-- 💼 Business / Wirtschaft
-- 🔒 Security / Datenschutz
-- 🚀 Startups / Launches
-- 🌍 Politik / Gesellschaft
-- 💡 Innovation / Wissenschaft
+Wait until Discord has fully loaded. If a login is required, tell the user and wait.
 
-**Formatierungsregeln:**
-- Titel in `**fett**` (zwei Sternchen)
-- Bullet Points mit `•` (Alt+8 oder kopieren)
-- Maximal 6 Bullet Points — prägnant bleiben
-- Zusammenfassung: 1–2 Sätze, kein Fachjargon
-- URL am Ende immer als Klartext (kein Markdown-Link)
+### Step 3: Find the input field
 
-### Schritt 5: Screenshot und Bestätigung
+Use the `find` tool with a natural-language description such as:
+- "message input field in the Discord channel"
+- "text box for writing a message"
 
-Mache einen Screenshot, der die fertige Nachricht im Eingabefeld zeigt. Zeige ihn dem User und frage:
+Click the field to focus it.
 
-> „Die Nachricht ist fertig. Soll ich sie jetzt senden?"
+### Step 4: Type the message
 
-**Warte auf explizites Ja** — nicht automatisch senden.
+> ⚠️ **CRITICAL: line breaks in Discord**
+> Discord sends the message on `Enter`. Line breaks **must use `Shift+Enter`**.
+> **Never** put `\n` into a string. Type each line separately and end it with `Shift+Enter`.
 
-### Schritt 6: Senden und bestätigen
+Write the message in the configured post language and type it **line by line** in this format:
 
-Nur nach explizitem „Ja" / „Senden" / „Go":
-1. Drücke `Enter` um die Nachricht zu senden
-2. Warte kurz bis die Nachricht erscheint
-3. Mache einen abschließenden Screenshot zur Bestätigung
-4. Informiere den User: „✅ Gepostet!"
+```
+[Emoji] **Bold title** [optional emoji]
+[Shift+Enter]
+[Shift+Enter]
+One or two sentences summarizing the article.
+[Shift+Enter]
+[Shift+Enter]
+• Key point 1
+[Shift+Enter]
+• Key point 2
+[Shift+Enter]
+• Key point 3
+[Shift+Enter]
+[more bullet points if needed]
+[Shift+Enter]
+[Shift+Enter]
+🔗 https://original-url.com/article
+```
+
+**Emoji choice** (pick one that fits the topic):
+- 🔴 Breaking news / important alert
+- 🤖 AI / tech
+- 💼 Business / economy
+- 🔒 Security / privacy
+- 🚀 Startups / launches
+- 🌍 Politics / society
+- 💡 Innovation / science
+
+**Formatting rules:**
+- Title in `**bold**` (two asterisks)
+- Bullet points with the `•` character
+- At most 6 bullet points; keep them concise
+- Summary: 1–2 sentences, no jargon
+- Always put the URL at the end as plain text (not a Markdown link)
+
+### Step 5: Screenshot and confirmation
+
+Take a screenshot that shows the finished message in the input field. Show it to the user and ask:
+
+> "The message is ready. Should I send it now?"
+
+**Wait for an explicit yes.** Never send automatically.
+
+### Step 6: Send and confirm
+
+Only after an explicit "yes" / "send" / "go":
+1. Press `Enter` to send the message
+2. Wait briefly until the message appears
+3. Take a final screenshot as confirmation
+4. Tell the user: "✅ Posted!"
 
 ---
 
-## Format-Beispiel
+## Format example
 
 ```
-🔴 **OpenAI und Microsoft — Neue Phase** 🤝
+🔴 **OpenAI and Microsoft — A New Phase** 🤝
 
-Die Partnerschaft wurde grundlegend überarbeitet. Wichtigste Änderungen im Überblick.
+The partnership has been fundamentally restructured. Here are the key changes.
 
-• Microsoft bleibt primärer Cloud Partner
-• OpenAI darf jetzt auch andere Clouds nutzen
-• Neue Lizenzstruktur gilt bis 2032, aber nicht mehr exklusiv
-• Beide Seiten behalten Zugang zu gemeinsam entwickelten Modellen
+• Microsoft remains the primary cloud partner
+• OpenAI can now use other cloud providers as well
+• New license structure runs until 2032, but is no longer exclusive
+• Both sides retain access to jointly developed models
 
 🔗 https://openai.com/index/next-phase
 ```
 
 ---
 
-## Fehlerfälle
+## Error cases
 
-| Problem | Lösung |
+| Problem | Solution |
 |---|---|
-| Discord nicht eingeloggt | User informieren, warten bis er sich einloggt |
-| Eingabefeld nicht gefunden | Screenshot machen, User um Hilfe bitten |
-| Artikel nicht abrufbar | User fragen ob er den Inhalt manuell einfügen will |
-| Nachricht zu lang | Bullet Points kürzen, max. 4 statt 6 |
+| Not logged into Discord | Tell the user and wait until they have logged in |
+| Input field not found | Take a screenshot and ask the user for help |
+| Article cannot be fetched | Ask the user whether they want to paste the content manually |
+| Message too long | Shorten the bullet points, use at most 4 instead of 6 |

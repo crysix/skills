@@ -28,9 +28,9 @@ The skill will be available automatically in all new conversations.
 
 Upload a photo of the item and say something like:
 
-> "Mach eine Kleinanzeige daraus."  
-> "Ich will das verkaufen."  
-> "Erstell mir einen Anzeigentext."
+> "Turn this into a Kleinanzeige."  
+> "I want to sell this."  
+> "Write me a listing."
 
 Claude will automatically detect the intent and start the workflow.
 
@@ -38,19 +38,21 @@ Claude will automatically detect the intent and start the workflow.
 
 If you don't have a photo, describe the item:
 
-> "Ich möchte mein altes Sony WH-1000XM4 Headset bei Kleinanzeigen verkaufen."
+> "I want to sell my old Sony WH-1000XM4 headphones on Kleinanzeigen."
 
 Claude will ask for a photo or work with the description you provide.
 
 ### Trigger Phrases
 
 The skill activates automatically on phrases like:
-- „Mach eine Kleinanzeige"
-- „Ich will das verkaufen"
-- „Anzeigentext schreiben"
-- „Anzeige erstellen"
-- „Bei Kleinanzeigen einstellen"
-- „eBay Kleinanzeigen"
+- "Make a Kleinanzeige"
+- "I want to sell this"
+- "Write a listing"
+- "Create an ad"
+- "List this on Kleinanzeigen"
+- "eBay Kleinanzeigen"
+
+German phrases work as well. Claude talks to you in your language, but the listing itself is always written in German, because it is posted on Kleinanzeigen.de.
 
 ---
 
@@ -90,15 +92,17 @@ The output is a formatted copy-paste block containing:
 
 ## Example Output
 
+The labels and the price calculation are for you; the listing text is German.
+
 ```
 ════════════════════════════════════════
-KLEINANZEIGE – BEREIT ZUM EINSTELLEN
+KLEINANZEIGE – READY TO POST
 ════════════════════════════════════════
 
-TITEL (max. 65 Zeichen):
+TITLE (max. 65 characters):
 Sony WH-1000XM4 Kopfhörer – gut erhalten – mit Zubehör
 
-BESCHREIBUNG:
+DESCRIPTION:
 Sony WH-1000XM4 Over-Ear-Kopfhörer mit aktiver Geräuschunterdrückung.
 Gut erhalten, voll funktionsfähig. Kleine Gebrauchsspuren am Bügel,
 keine Risse oder Defekte.
@@ -110,11 +114,11 @@ da auf Over-Ear-Modell mit Mikrofon gewechselt.
 Abholung in Köln bevorzugt. Versand möglich – Versandkosten trägt
 der Käufer. Privatverkauf, keine Garantie, keine Rücknahme.
 
-PREIS:
+PRICE:
 175 € VB
-(Neupreis: 250 € → Abzug 30 % für Zustand "Gut erhalten")
+(original price: 250 € → minus 30 % for condition "Gut erhalten")
 
-KATEGORIE:
+CATEGORY:
 Elektronik → Audio → Kopfhörer
 
 ════════════════════════════════════════
@@ -154,5 +158,6 @@ Yes, just continue in the same conversation: "Make the title shorter" or "Add th
 ```
 kleinanzeigen-listing/
 ├── SKILL.md    — Full skill instructions for Claude
+├── Prompt.txt  — The original prompt the skill was created from
 └── README.md   — This file
 ```
