@@ -185,3 +185,9 @@ kleinanzeigen-listing/
 ├── SKILL.md    — Full skill instructions for Claude
 └── README.md   — This file
 ```
+
+---
+
+## Author
+
+Christian Hinz ([@crysix](https://github.com/crysix))

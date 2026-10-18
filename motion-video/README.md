@@ -210,3 +210,9 @@ motion-video/
 ├── .gitignore       Keeps preferences.md out of the repo
 └── preferences.md   Created on the first run (route, variable names, optional brand settings)
 ```
+
+---
+
+## Author
+
+Christian Hinz ([@crysix](https://github.com/crysix))

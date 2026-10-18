@@ -10,6 +10,7 @@ My personal collection of skills for AI agents like Claude Code and Codex. Nothi
 | [discord-news](discord-news/) | Summarizes an article and posts it to a Discord channel via Claude in Chrome, after you confirm |
 | [kleinanzeigen-listing](kleinanzeigen-listing/) | Turns a photo into a ready-to-paste Kleinanzeigen.de listing with a price suggestion |
 | [motion-video](motion-video/) | Builds short explainer or ad videos with motion graphics, AI cutout images, voiceover and sound |
+| [website-creator](website-creator/) | Walks you through building a website in nine phases, from brand and research to launch |
 
 Every folder has a `SKILL.md` and a `README.md` with the details.
 

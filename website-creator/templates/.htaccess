@@ -1,0 +1,39 @@
+# Static site on Apache or LiteSpeed (Hostinger, IONOS, all-inkl and others)
+# Replace DOMAIN.TLD with the real domain (without www).
+
+RewriteEngine On
+
+# Always HTTPS and without www (important if the form is only allowed for one address)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://DOMAIN.TLD%{REQUEST_URI} [L,R=301]
+
+# Never serve local working folders, in case they get uploaded after all
+RedirectMatch 404 ^/(tweak|archive|logo|research|references|deploy)(/|$)
+
+AddType font/woff2 .woff2
+AddType image/webp .webp
+AddType image/svg+xml .svg
+AddType text/plain .txt
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/plain application/xml image/svg+xml
+</IfModule>

@@ -183,6 +183,12 @@ Claude: "And what energy should the session have — practical and actionable,
 
 ---
 
+## Author
+
+Christian Hinz ([@crysix](https://github.com/crysix))
+
+---
+
 ## License
 
 MIT, see [LICENSE](../LICENSE). Feel free to adapt and extend it.

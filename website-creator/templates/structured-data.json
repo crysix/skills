@@ -1,0 +1,59 @@
+{
+  "_note": "Goes into the <head> of the home page as <script type=\"application/ld+json\">. Remove this _note entry. Only enter real facts from PRODUCT.md and copy.md, delete unused fields. Check with Google's Rich Results Test.",
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://DOMAIN.TLD/#person",
+      "name": "First Last",
+      "jobTitle": "Job title",
+      "url": "https://DOMAIN.TLD/",
+      "image": "https://DOMAIN.TLD/assets/img/portrait.jpg",
+      "worksFor": { "@id": "https://DOMAIN.TLD/#business" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "University" },
+      "knowsAbout": ["Topic 1", "Topic 2", "Topic 3"],
+      "sameAs": [
+        "https://www.linkedin.com/in/...",
+        "https://www.youtube.com/@...",
+        "https://www.instagram.com/..."
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://DOMAIN.TLD/#business",
+      "name": "Brand name",
+      "url": "https://DOMAIN.TLD/",
+      "logo": "https://DOMAIN.TLD/assets/img/logo.svg",
+      "image": "https://DOMAIN.TLD/assets/img/og-image.png",
+      "description": "One fact sentence: what, for whom, where.",
+      "founder": { "@id": "https://DOMAIN.TLD/#person" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "City",
+        "addressCountry": "DE"
+      },
+      "areaServed": { "@type": "Country", "name": "Germany" },
+      "email": "contact@DOMAIN.TLD",
+      "knowsLanguage": "de",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service 1", "description": "What exactly." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service 2", "description": "What exactly." } }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://DOMAIN.TLD/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Question exactly as on the page?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Answer exactly as on the page." }
+        }
+      ]
+    }
+  ]
+}

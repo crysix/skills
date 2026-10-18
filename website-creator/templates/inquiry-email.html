@@ -1,0 +1,110 @@
+<!doctype html>
+<!-- Notification email for new inquiries (n8n: email node, format HTML).
+     Expects the form data under $json.body (webhook node with JSON).
+     Replace colors: #1F2A44 main color, #E4572E accent, #9A3A1E dark accent (labels),
+     #F1F3F6 light surface, #141A2B footer. Adapt the key-fact fields (size, budget) to your own form.
+     Translate the labels into the site owner's language and adapt the time zone and date format.
+     Subject suggestion: New inquiry: {{ $json.body.company || $json.body.name }} -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New inquiry</title>
+</head>
+<body style="margin:0;padding:0;background:#F1F3F6;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F1F3F6;">
+  <tr>
+    <td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background:#ffffff;border-radius:10px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:#1F2A44;padding:28px 32px 24px;">
+            <p style="margin:0 0 6px;font-size:13px;line-height:18px;color:#C9CFDC;">{{ String($json.body.page || '').replace(/^https?:\/\//, '').split('/')[0] }} &middot; {{ DateTime.fromISO($json.body.submittedAt).setZone('Europe/Berlin').toFormat('dd.MM.yyyy, HH:mm') }}</p>
+            <h1 style="margin:0;font-size:24px;line-height:30px;font-weight:bold;color:#ffffff;">New inquiry from {{ String($json.body.company || $json.body.name || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])) }}</h1>
+          </td>
+        </tr>
+        <tr>
+          <td style="height:4px;background:#E4572E;font-size:0;line-height:0;">&nbsp;</td>
+        </tr>
+
+        <!-- Key facts -->
+        <tr>
+          <td style="padding:28px 32px 8px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="50%" style="padding:0 8px 16px 0;vertical-align:top;">
+                  <p style="margin:0 0 4px;font-size:12px;line-height:16px;color:#9A3A1E;font-weight:bold;">EMPLOYEES (ADAPT FIELD)</p>
+                  <p style="margin:0;font-size:18px;line-height:24px;color:#1F2A44;font-weight:bold;">{{ $json.body.size }}</p>
+                </td>
+                <td width="50%" style="padding:0 0 16px 8px;vertical-align:top;">
+                  <p style="margin:0 0 4px;font-size:12px;line-height:16px;color:#9A3A1E;font-weight:bold;">BUDGET (ADAPT FIELD)</p>
+                  <p style="margin:0;font-size:18px;line-height:24px;color:#1F2A44;font-weight:bold;">{{ $json.body.budget }}</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Contact -->
+        <tr>
+          <td style="padding:0 32px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #dde2ea;">
+              <tr>
+                <td style="padding:12px 0;font-size:14px;line-height:20px;color:#4A5268;width:120px;border-bottom:1px solid #dde2ea;">Name</td>
+                <td style="padding:12px 0;font-size:15px;line-height:20px;color:#1A1A1A;font-weight:bold;border-bottom:1px solid #dde2ea;">{{ String($json.body.name || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])) }}</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 0;font-size:14px;line-height:20px;color:#4A5268;border-bottom:1px solid #dde2ea;">Company</td>
+                <td style="padding:12px 0;font-size:15px;line-height:20px;color:#1A1A1A;border-bottom:1px solid #dde2ea;">{{ String($json.body.company || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])) }}</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 0;font-size:14px;line-height:20px;color:#4A5268;border-bottom:1px solid #dde2ea;">Email</td>
+                <td style="padding:12px 0;font-size:15px;line-height:20px;border-bottom:1px solid #dde2ea;"><a href="mailto:{{ $json.body.email }}" style="color:#1F2A44;text-decoration:underline;">{{ $json.body.email }}</a></td>
+              </tr>
+              <tr>
+                <td style="padding:12px 0;font-size:14px;line-height:20px;color:#4A5268;border-bottom:1px solid #dde2ea;">Phone</td>
+                <td style="padding:12px 0;font-size:15px;line-height:20px;color:#1A1A1A;border-bottom:1px solid #dde2ea;">{{ $json.body.phone ? '<a href="tel:' + $json.body.phone.replace(/[^+\d]/g, '') + '" style="color:#1F2A44;text-decoration:underline;">' + $json.body.phone.replace(/[&<>"]/g, '') + '</a>' : 'not provided' }}</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 0;font-size:14px;line-height:20px;color:#4A5268;border-bottom:1px solid #dde2ea;">Came from</td>
+                <td style="padding:12px 0;font-size:15px;line-height:20px;color:#1A1A1A;border-bottom:1px solid #dde2ea;">{{ $json.body.source || 'not provided' }}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Message -->
+        <tr>
+          <td style="padding:28px 32px 8px;">
+            <p style="margin:0 0 10px;font-size:12px;line-height:16px;color:#9A3A1E;font-weight:bold;">PROJECT</p>
+            <div style="background:#F1F3F6;border-radius:8px;padding:18px 20px;font-size:15px;line-height:24px;color:#1A1A1A;">{{ String($json.body.message || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])).replace(/\r?\n/g, '<br>') }}</div>
+          </td>
+        </tr>
+
+        <!-- Reply -->
+        <tr>
+          <td style="padding:24px 32px 32px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#E4572E;border-radius:999px;">
+                  <a href="mailto:{{ $json.body.email }}?subject=Your%20inquiry" style="display:inline-block;padding:14px 26px;font-size:15px;line-height:18px;font-weight:bold;color:#ffffff;text-decoration:none;">Reply</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#141A2B;padding:16px 32px;">
+            <p style="margin:0;font-size:12px;line-height:18px;color:#AEB6C8;">Privacy consent: {{ $json.body.consent ? 'yes' : 'no' }} &middot; Sent from {{ $json.body.page }}</p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

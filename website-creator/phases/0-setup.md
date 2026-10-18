@@ -1,0 +1,69 @@
+# Phase 0: Setup
+
+Goal: The core tools work, there is a project folder and a status file. Duration: 5 to 15 minutes.
+
+Only things that need no account and no money are set up here. DataForSEO comes at the start of phase 2, the hosting MCP in phase 7, each right before it's needed. That way there is no long setup at the start, and at that point the user understands what they are creating the account for.
+
+## 1. Clarify the starting point
+
+Four questions in one message, each with a recommendation:
+
+1. **Is there already a website or a brand?** If yes, the address and existing brand files (logo, style guide). They are the most important source for the brand and show what should get better. If no, phase 1 leads through the name and logo.
+2. **What is the site for?** Getting inquiries, selling something, informing, collecting applications. A site has one main goal.
+3. **Where should it run?** Own web space (e.g. Hostinger, IONOS, all-inkl), Netlify or Vercel, or still open. Recommendation for beginners: a static site on ordinary web space, without a site builder and without WordPress. Fast, secure, no updates.
+4. **Should the research run on real search data?** Recommendation: yes, with DataForSEO. Research for one project costs about one dollar of credit. It works without too, but the research gets less precise. It's set up only in phase 2.
+
+   Show the link right in the question so the user can click it: https://dataforseo.com/?aff=f743f28f-d5b8-4e34-a66d-5c99089b7ca7. Say openly that it is an affiliate link of Christian Hinz, the author of this skill. It costs the user nothing extra. New accounts get $1 of trial credit, which is often enough for one project's research. Anyone who doesn't want to use the link signs up directly at dataforseo.com.
+
+   The question could read something like: "I recommend DataForSEO for the research. New accounts get $1 of trial credit, which is often enough for this project: https://dataforseo.com/?aff=f743f28f-d5b8-4e34-a66d-5c99089b7ca7. It's an affiliate link of the skill's author and costs you nothing extra. Would you like to use it?"
+
+## 2. Create the project folder and status file
+
+```
+project/
+  WEBSITE-STATUS.md     phase status (from templates/)
+  references/           screenshots and notes on role models
+  research/             keyword and GEO map
+  archive/              old drafts, never delete
+```
+The other folders (`logo/`, `assets/`, `deploy/`, `tweak/`) appear in later phases.
+
+Create the status file from [../templates/WEBSITE-STATUS.md](../templates/WEBSITE-STATUS.md) and enter the answers from step 1. Set phase 0 to 🔄.
+
+This happens before the installs, because the agent may have to be restarted afterwards.
+
+## 3. Check and set up the core tools
+
+First check what is already there, then set up only what's missing. Start by finding out which agent the skill runs in (Claude Code, Codex or another) and use the commands for that agent.
+
+**impeccable** (required: design rules, directions, checks). Works with Claude Code, Codex, Cursor, Gemini CLI and other agents:
+```
+npx impeccable install
+```
+The program detects the installed agents and asks whether to install into the project or globally. In Claude Code, `claude plugin marketplace add pbakaus/impeccable` and `claude plugin install impeccable@impeccable` work as an alternative.
+On first use, impeccable downloads a program of its own. If that is blocked, context and instructions still work; only the automatic checks are missing.
+
+**Python and Playwright** (screenshots, measurements):
+```
+pip install playwright
+python -m playwright install chromium
+```
+On Windows, the installed Chrome works too (`channel="chrome"`); then the second command isn't needed.
+
+## 4. Restart if needed
+
+If something was newly installed, the agent has to restart once to see it.
+
+1. Note in the status file what was set up and whether Playwright is deliberately left out.
+2. Tell the user: restart the agent and reopen the same chat (Claude Code in the terminal: `claude --continue`; in the desktop app, click the chat again), then simply keep writing.
+3. After the restart, check that everything is available, record the result in the status file, set phase 0 to ✅.
+
+Worth telling the user once: whoever continues later in a new chat, after a longer break or after `/compact`, types `/website-creator continue` (Codex: `$website-creator continue`). The skill then reads the status file first and knows where to pick up.
+
+## Done when
+
+- [ ] The four questions are answered and in the status file.
+- [ ] impeccable works. Playwright works or is deliberately left out and noted in the status file.
+- [ ] Project folder and status file exist.
+
+Next: [Phase 1: Foundation](1-foundation.md).

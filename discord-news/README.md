@@ -168,3 +168,9 @@ Open `SKILL.md` and update the channel URL and names under the **Configuration**
 ## Safety
 
 Claude will **never** post without your explicit confirmation. You always see a screenshot of the prepared message first and are asked whether it should be sent.
+
+---
+
+## Author
+
+Christian Hinz ([@crysix](https://github.com/crysix))
