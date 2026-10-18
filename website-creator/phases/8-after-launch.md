@@ -4,7 +4,7 @@ Goal: Google knows the site, all profiles tell the same story, and after three t
 
 ## Right after launch
 
-1. **Google Search Console:** create a domain property. Google provides a TXT record. The user enters it in DNS (or the agent via the hosting MCP, after an OK). Then submit the sitemap and request indexing for the home page. Search Console later also shows which search terms the site appears for, how often it gets clicked and at which position it ranks. The site needs neither Google Analytics nor a cookie banner for that.
+1. **Google Search Console:** create a domain property. Google provides a TXT record. The user enters it in DNS (or the agent through the host's MCP or API, after an OK). Then submit the sitemap and request indexing for the home page. Search Console later also shows which search terms the site appears for, how often it gets clicked and at which position it ranks. The site needs neither Google Analytics nor a cookie banner for that.
 2. **Bing Webmaster Tools:** can be imported from Search Console. Bing matters because ChatGPT's web search relies on Bing, among others.
 3. **Align profiles.** Transfer the fact sentences from `copy.md` to all profiles: LinkedIn (person and company page), YouTube channel description, Instagram, Google Business Profile, industry directories. The same everywhere: who, what, for whom, where, and the link to the site. Whatever is wrong on a profile, AI search engines repeat.
 

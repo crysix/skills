@@ -1,0 +1,8 @@
+# Redirects for Netlify and Cloudflare. Only needed on a redesign, when old addresses
+# change: one rule per line, old path, new path, status. Always write 301 explicitly
+# (Netlify's default is 301, Cloudflare's is 302).
+# www to the address without www is not done here: Netlify does it automatically for the
+# primary domain, Cloudflare needs a Redirect Rule (see hosting/cloudflare.md).
+
+/services.html    /#services    301
+/contact.html     /#inquiry     301

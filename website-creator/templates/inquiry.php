@@ -1,5 +1,5 @@
 <?php
-/* Form receiver without a third-party service, for web space with PHP (Hostinger, IONOS, all-inkl …).
+/* Form receiver without a third-party service, for web space with PHP (milkycode/Plesk, IONOS, ALL-INKL.COM, Hostinger …).
 
    Use:
    1. Put this file next to index.html as inquiry.php (and add it to build.py).

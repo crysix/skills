@@ -1,0 +1,13 @@
+// Cloudflare Workers with static assets. Goes into the project folder (next to deploy/),
+// not into dist/. Deploy with: npx wrangler deploy
+{
+  "name": "SITE-NAME",
+  "compatibility_date": "2026-10-18",
+  "assets": {
+    "directory": "./dist",
+    // Serves dist/404.html for unknown addresses; remove the line if the site has none
+    "not_found_handling": "404-page"
+  },
+  // The domain must use Cloudflare DNS. Without www: the redirect from www is a Redirect Rule.
+  "routes": [{ "pattern": "DOMAIN.TLD", "custom_domain": true }]
+}

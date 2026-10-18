@@ -38,23 +38,23 @@ Tell the user clearly: this doesn't replace legal advice. When the site changes,
 
 ## 4. Connect the form
 
-The form script [../templates/form.js](../templates/form.js) sends the inquiry as JSON to the address in `data-endpoint`. Where to is the user's decision. Ask with a recommendation:
+The form script [../templates/form.js](../templates/form.js) sends the inquiry as JSON to the address in `data-endpoint`. Where to is the user's decision; the hosting file (section "At a glance", row "Form") says what the host supports. Ask with a recommendation:
 
 | Route | Good for | Cost | Effort |
 |---|---|---|---|
-| **Own PHP script** [../templates/inquiry.php](../templates/inquiry.php) | ordinary web space with PHP (Hostinger, IONOS, all-inkl). No third-party service, data stays with the own host. | none | low |
-| **Form service** (Formspree, Web3Forms) | Netlify, Vercel, GitHub Pages or web space without PHP | free up to a monthly limit | very low |
+| **Own PHP script** [../templates/inquiry.php](../templates/inquiry.php) | web space with PHP (milkycode, other web space, Hostinger). No third-party service, data stays with the own host. | none | low |
+| **Form service** (Formspree, Web3Forms) | hosts without PHP (Netlify, Vercel, Cloudflare, GitHub Pages, own server without PHP) | free up to a monthly limit | very low |
 | **Netlify Forms** | sites hosted on Netlify | free up to a monthly limit | very low |
 | **Webhook in n8n, Make or Zapier** | processing inquiries further: email, CRM, spreadsheet, Slack | depends on the service | medium |
 | **`mailto:` only** (leave `data-endpoint` empty) | interim solution | none | none |
 
-Recommendation for beginners with web space: the PHP script. Anyone already using n8n or Make: webhook.
+Recommendation with web space: the PHP script. Anyone already using n8n or Make: webhook.
 
 ### Own PHP script
 
 1. Copy `templates/inquiry.php` into the project, fill in `RECIPIENT`, `SENDER` and `DOMAIN`, add the file to `deploy/build.py`.
 2. In the form: `data-endpoint="/inquiry.php"`.
-3. Create a sender address on the own domain at the host. Otherwise the emails often land in spam.
+3. Create a sender address on the own domain at the host. Otherwise the emails often land in spam, and many hosts reject other senders (rules in the hosting file).
 4. The script checks the origin, required fields and email address, evaluates the invisible honeypot field and lets at most five inquiries per IP per hour through.
 5. PHP usually doesn't run locally. Testing happens after the upload, with a test inquiry by the user.
 
@@ -62,7 +62,7 @@ Recommendation for beginners with web space: the PHP script. Anyone already usin
 
 - **Formspree:** create a form on formspree.io, put the address `https://formspree.io/f/<id>` into `data-endpoint`.
 - **Web3Forms:** request an access key by email on web3forms.com. `data-endpoint="https://api.web3forms.com/submit"` and in the form `<input type="hidden" name="access_key" value="<key>">`. The key may sit publicly in the HTML; it only allows sending to the stored address.
-- **Netlify Forms:** `data-netlify="true"` and `name` on the `<form>`; then send classically without `form.js`, or via `fetch` to `/` with `application/x-www-form-urlencoded` (see the Netlify docs).
+- **Netlify Forms:** see [../hosting/netlify.md](../hosting/netlify.md).
 - Name the service in the privacy policy. For services abroad, check data processing agreements and data transfers (country file, section "Privacy law and consent").
 
 ### Webhook (example n8n)
@@ -76,32 +76,25 @@ For every route: a real test inquiry is sent by the user themselves, or they exp
 
 ## 5. Prepare the upload
 
-- **Build script:** copy [../templates/build.py](../templates/build.py) to `deploy/build.py` and adapt the file list. It copies exactly the files that go live to `dist/` and packs `dist.zip`. That way working files (research, panel, drafts) never land on the server.
-- **`.htaccess`** for Apache and LiteSpeed servers (Hostinger, IONOS, all-inkl): [../templates/.htaccess](../templates/.htaccess). Forces HTTPS, redirects `www` to the address without `www` (otherwise the form's CORS permission doesn't match), blocks local folders, sets caching. On Netlify or Vercel, use their configuration file instead.
+- **Build script:** copy [../templates/build.py](../templates/build.py) to `deploy/build.py` and adapt the file list. It copies exactly the files that go live to `dist/`, versions the links to CSS and JS (so browsers load changes right away) and packs `dist.zip`. That way working files (research, panel, drafts) never land on the server.
+- **Configuration for the host:** the hosting file (section "Configuration") names the template from [../templates/hosting/](../templates/hosting/) and the `HOST_FILES` entry for `build.py`: `.htaccess` for web space and Plesk, `_headers` for Netlify and Cloudflare, `vercel.json` for Vercel, the server configuration for an own server. Together with the host's domain settings, they force HTTPS, redirect `www` to the address without `www` (otherwise the form's allowed origin doesn't match), set caching and security headers and, where the host allows it, block working files. GitHub Pages allows no own headers.
 
 ## 6. Go online
 
-**Only after an explicit OK from the user.**
-
-### With the Hostinger MCP
-
-Setup and deployment are in [7-hostinger.md](7-hostinger.md). Load it only when the site goes to Hostinger.
-
-### Without an MCP
-
-Upload `dist.zip` in the host's file manager into the web folder (usually `public_html`) and extract it. Connect the domain to the web space in the host's panel, activate the SSL certificate.
+**Only after an explicit OK from the user.** Follow the hosting file: section "Set up" if the host isn't connected yet, then section "Deploy".
 
 ## 7. Check live
 
 - HTTPS works, `http://` and `www.` redirect to the right address.
 - All files return status 200 (`curl -I` on the page, CSS, JS, fonts, images, robots.txt, llms.txt, sitemap.xml).
-- Blocked folders (`/tweak/` etc.) return 404.
+- Blocked folders and files (`/tweak/`, `.md` files etc.) return 403 or 404, where the host allows blocking.
+- Headers arrive: `curl -I` on a CSS file shows a long `Cache-Control` (or `Expires`) and `X-Content-Type-Options` (not on GitHub Pages).
 - `python3 tools/check_site.py https://domain.tld` for screenshots and console.
 - Measure cookies and requests to third-party domains on the live site once more. The result must match step 2.
 - Check structured data with Google's Rich Results Test.
 - Check the preview image with the LinkedIn Post Inspector.
 
-For later changes, record in the status file: build, upload, clear cache, check.
+For later changes, record the update flow from the hosting file (section "Updates") in the status file.
 
 ## Done when
 

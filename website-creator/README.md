@@ -9,7 +9,7 @@ A skill for AI agents like Claude Code or Codex that walks you step by step thro
 | | |
 |---|---|
 | **Runs in** | Claude Code, Codex and other agents that load skills |
-| **Output** | a static HTML/CSS/JS site, online on your own web space |
+| **Output** | a static HTML/CSS/JS site, online at milkycode webhosting (default) or the host of your choice |
 | **Phases** | nine, each with a sign-off before the next one starts |
 | **Design** | [impeccable](https://github.com/pbakaus/impeccable) plugin, against the generic AI look |
 | **Animation** | [GSAP](https://gsap.com) with ScrollTrigger and SplitText, self-hosted |
@@ -78,7 +78,7 @@ Other arguments: `/website-creator status` shows where the project stands, `/web
 - **impeccable**, a free design plugin. The skill sets it up with you at the start.
 - **Python with Playwright** (recommended) for screenshots, brand extraction and check runs. Also set up at the start; on macOS and Linux in a virtual environment, because the system Python there usually refuses `pip install`.
 - **DataForSEO** account for the research (optional), set up in phase 2. New accounts get $1 of trial credit, often enough for one project. If you like, sign up through my [affiliate link](https://dataforseo.com/?aff=f743f28f-d5b8-4e34-a66d-5c99089b7ca7), at no extra cost to you.
-- **Web hosting** for the launch, set up in phase 7. A Hostinger MCP makes deployment possible straight from the agent; without it, you upload a zip file.
+- **Web hosting** for the launch, set up in phase 7. The default is milkycode webhosting on Plesk, where the agent can deploy through the Plesk MCP. Other web space, Hostinger, Netlify, Vercel, Cloudflare, GitHub Pages or an own server work too; each has its own file in [hosting/](hosting/).
 
 ---
 
@@ -87,7 +87,7 @@ Other arguments: `/website-creator status` shows where the project stands, `/web
 ### On every call
 
 1. **Read the status file.** The skill first reads `WEBSITE-STATUS.md` in your project and picks up where it left off. Without one, it starts with phase 0.
-2. **Load only what's needed.** Only the current phase file is loaded. Extra files (DataForSEO setup, cookies and terms, Hostinger) and sections of the country file come in only when a phase needs them.
+2. **Load only what's needed.** Only the current phase file is loaded. Extra files (DataForSEO setup, cookies and terms), the chosen hosting file and sections of the country file come in only when a phase needs them.
 3. **Work through the phase.** The skill asks only where a decision is yours, bundled into one message with a recommendation. Everything else it does itself.
 4. **Wrap up.** It shows what was produced, updates the status file and asks whether to continue. After phases 1, 2, 3, 4 and 6 you sign off; without your OK, the next phase doesn't start.
 
@@ -114,6 +114,23 @@ Everything that depends on the country lives in [countries/](countries/): domain
 | `other.md` | any other country: the agent builds a profile from official sources, with source and date for every fact |
 
 The skill assumes Germany unless your existing site, your address or the conversation says otherwise, and says so in one line so you can correct it.
+
+### Hosting module
+
+Everything that depends on the host lives in [hosting/](hosting/), one file per option, each with the same sections: at a glance (cost, data location, form route, configuration, agent access), set up, configuration, deploy, updates, privacy, sources.
+
+| File | Host |
+|---|---|
+| `milkycode.md` | milkycode webhosting on Plesk, the default; the agent can deploy through the Plesk MCP |
+| `webspace.md` | other web space: IONOS, STRATO, ALL-INKL.COM, netcup, Hetzner, World4You, Hostpoint, cyon, Infomaniak |
+| `hostinger.md` | Hostinger, with the Hostinger MCP |
+| `netlify.md` | Netlify, with built-in forms |
+| `vercel.md` | Vercel (business sites need Pro) |
+| `cloudflare.md` | Cloudflare Workers |
+| `github-pages.md` | GitHub Pages |
+| `own-server.md` | an own server with Caddy or nginx |
+
+The matching configuration templates are in [templates/hosting/](templates/hosting/). `build.py` versions every link to CSS and JS, so the hosts can let browsers cache them for a year and visitors still see changes right away.
 
 ### The nine phases
 
@@ -174,8 +191,8 @@ Copy comes before design, so the layout is built for real content instead of pla
 - Cookie and terms check by the country file. For an inquiry-only site, that's usually one sentence.
 - Legal pages that fit the real site.
 - Form target of your choice: own PHP script, form service, Netlify Forms or a webhook. You send the test inquiry.
-- `build.py` packs only the files that go live; `.htaccess` blocks working folders.
-- Online only after your OK, via the Hostinger MCP or a zip upload, followed by a live check.
+- `build.py` packs only the files that go live and versions the CSS and JS links; the host configuration sets caching and security headers and blocks working files.
+- Online only after your OK, by the route in the hosting file (MCP, CLI, SFTP or zip upload), followed by a live check.
 
 **8 · After launch**
 - Google Search Console and Bing Webmaster Tools.
@@ -186,7 +203,7 @@ Copy comes before design, so the layout is built for real content instead of pla
 
 ## Costs
 
-The skill itself costs nothing. DataForSEO is pay as you go: the research for one project is about $1. Hosting is whatever your web space costs. Form services and consent tools are free up to their limits.
+The skill itself costs nothing. DataForSEO is pay as you go: the research for one project is about $1. Hosting costs whatever the chosen host charges; the hosting files list the plans. Form services and consent tools are free up to their limits.
 
 ---
 
@@ -200,8 +217,12 @@ website-creator/
 ├── countries/            de.md (Germany, default), at.md (Austria), ch.md (Switzerland),
 │                         other.md (profile for any other country)
 ├── phases/               One file per phase, loaded only when that phase is up,
-│                         plus setup files for DataForSEO, cookies and terms, Hostinger
-├── templates/            Status file, robots.txt, llms.txt, sitemap.xml, .htaccess,
+│                         plus setup files for DataForSEO, cookies and terms
+├── hosting/              one file per host, same sections each: milkycode.md (default),
+│                         webspace.md, hostinger.md, netlify.md, vercel.md, cloudflare.md,
+│                         github-pages.md, own-server.md
+├── templates/            Status file, robots.txt, llms.txt, sitemap.xml, hosting/ (.htaccess,
+│                         _headers, _redirects, vercel.json, wrangler.jsonc, nginx.conf, Caddyfile),
 │                         structured data, build script, form script, PHP form receiver,
 │                         notification email, preview image, tweak panel
 └── tools/

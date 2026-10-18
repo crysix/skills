@@ -30,7 +30,7 @@ The order has reasons. Copy comes before design, because a design direction with
 ## Flow on every call
 
 1. **Read the status file.** Is there a `WEBSITE-STATUS.md` in the project folder? Then continue where it says, and state in one sentence which phase is up. If there is none, start with phase 0 and create it from [templates/WEBSITE-STATUS.md](templates/WEBSITE-STATUS.md).
-2. **Load only the current phase file.** Not all of them at once. Each phase file says what must exist at the end. Phases 2 and 7 have extra files (DataForSEO setup, cookies and terms, Hostinger deployment); the phase file says when to load them.
+2. **Load only the current phase file.** Not all of them at once. Each phase file says what must exist at the end. Phases 2 and 7 have extra files (DataForSEO setup, cookies and terms), and the folders `countries/` and `hosting/` hold one file per country and per host; the phase file says when to load which.
 3. **Work through the phase.** Ask questions only where the phase file calls for a decision by the user. Do everything else yourself.
 4. **Wrap up.** Briefly show what was produced (files, screenshots, numbers), update the status file, announce the next phase in one sentence and ask whether to continue.
 
@@ -62,6 +62,10 @@ In the same chat, work simply continues after each phase and after each restart,
 
 Everything that depends on the country lives in a country file: domain and trademark check, search location codes, privacy and cookie law, legal pages, rules for selling online, official sources. The default is Germany, [countries/de.md](countries/de.md). For another country, use its file in `countries/` or build a profile with [countries/other.md](countries/other.md). The status file names the country file; phases point to the section they need, and you read only that section.
 
+## Hosting
+
+Everything that depends on the host lives in a hosting file: what it costs and where the data is, the form route, the configuration template, how the agent connects, how to deploy and update. The default recommendation is milkycode webhosting, [hosting/milkycode.md](hosting/milkycode.md); [phase 0](phases/0-setup.md) lists all options. Every hosting file has the same sections. The status file names the chosen one; read only that one.
+
 ## Tools
 
 | Tool | Required? | What for | Without the tool |
@@ -71,16 +75,17 @@ Everything that depends on the country lives in a country file: domain and trade
 | GSAP with ScrollTrigger and SplitText (free, self-hosted in the project) | yes | all animation, headings included | |
 | Python with Playwright | recommended | screenshots, brand extraction, check runs | screenshots by hand, colors from the logo |
 | DataForSEO (MCP) | optional, about $1 per project | search volume, Google results, ChatGPT answers | Google search by hand, ask ChatGPT yourself, keyword estimate |
-| hosting MCP (e.g. Hostinger) | optional | deployment straight from the agent | upload a zip file in the host's file manager |
+| hosting access (Plesk MCP for milkycode, the platform's CLI or MCP, SFTP) | optional | deployment straight from the agent | upload a zip file in the host's file manager |
 | n8n, Make or a form service | optional | receive inquiries from the form | `mailto:` fallback in the form |
 
-Each tool is set up where it's needed: impeccable and Playwright in [phase 0](phases/0-setup.md), DataForSEO in [phase 2](phases/2-dataforseo-setup.md), the hosting MCP in [phase 7](phases/7-hostinger.md).
+Each tool is set up where it's needed: impeccable and Playwright in [phase 0](phases/0-setup.md), DataForSEO in [phase 2](phases/2-dataforseo-setup.md), the hosting access in phase 7 with the chosen file in [hosting/](hosting/).
 
 ## Other files
 
 - [writing-rules.md](writing-rules.md): rules for website copy without an AI ring.
 - [countries/](countries/): `de.md` for Germany (default), `at.md` for Austria, `ch.md` for Switzerland, `other.md` for building a profile for any other country.
-- [templates/](templates/): status file, robots.txt, llms.txt, sitemap.xml, .htaccess, structured data, build script, form script, form receiver in PHP, notification email, preview image, tweak panel.
+- [hosting/](hosting/): `milkycode.md` (default), `webspace.md`, `hostinger.md`, `netlify.md`, `vercel.md`, `cloudflare.md`, `github-pages.md`, `own-server.md`.
+- [templates/](templates/): status file, robots.txt, llms.txt, sitemap.xml, host configurations in `templates/hosting/` (.htaccess, _headers, _redirects, vercel.json, wrangler.jsonc, nginx.conf, Caddyfile), structured data, build script, form script, form receiver in PHP, notification email, preview image, tweak panel.
 - [tools/](tools/): `extract_brand.py` (measure colors and fonts of a live site) and `check_site.py` (batched check run with screenshots).
 
 Templates and tools live in the folder of this SKILL.md, not in the user's project. Call scripts with the full path to the skill folder; copy templates into the project and adapt them there. Replace placeholders such as `DOMAIN.TLD` before launch.
