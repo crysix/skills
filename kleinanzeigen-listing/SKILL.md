@@ -33,7 +33,7 @@ Ask briefly, in the user's language: "Send me a photo of the item and I'll creat
 
 ## Step 2: Three follow-up questions in one message
 
-Ask **exactly these three questions** in a single, compact message, in the user's language:
+Ask **these three questions** in a single, compact message, in the user's language. Leave out any question the user has already answered; if all three are answered, skip this step.
 
 ```
 To complete the listing, three quick questions:
@@ -59,6 +59,8 @@ If the user answers "don't know" or information is missing, continue without it.
 | Poor (*Schlecht erhalten*) | − 50 % |
 | Defective (*Defekt*) | − 80 % |
 
+**Age:** the table assumes a fairly recent item. For items older than 2 years, add a further 10 percentage points of deduction per additional year, at most 30 points (e.g. 4 years old and good condition: − 30 % − 20 % = − 50 %). The total deduction never exceeds 90 %. Electronics lose value fastest; for items that hold their value (e.g. quality furniture, tools, musical instruments, bicycles), deduct less for age and say so. If a successor model exists, mention that the price may need to be lower. If the age is unknown, skip the age deduction.
+
 Round to even amounts (e.g. 45 €, not 47.50 €).
 
 **Without the original price:**
@@ -78,7 +80,7 @@ KLEINANZEIGE – READY TO POST
 ════════════════════════════════════════
 
 TITLE (max. 65 characters):
-[Item] – [Brand/model] – [short condition]
+[Brand model] [item] – [short condition] – [optional extra, e.g. "mit Zubehör"]
 
 DESCRIPTION:
 [Paragraph 1 – what it is & condition]
@@ -88,11 +90,11 @@ Factual description of the item. State the condition honestly, including defects
 Why it is being sold (optional: "wird nicht mehr gebraucht", "Upgrade" or similar). Included accessories, original packaging.
 
 [Paragraph 3 – handling]
-Abholung bevorzugt. Versand möglich gegen Aufpreis (Käufer trägt Versandkosten). Privatverkauf – keine Garantie, keine Rücknahme.
+Abholung bevorzugt. Versand möglich gegen Aufpreis (Käufer trägt Versandkosten). Privatverkauf unter Ausschluss jeglicher Gewährleistung, keine Rücknahme.
 
 PRICE:
 XX € VB
-(original price: XX € → minus XX % for condition "[German condition]")
+(original price: XX € → minus XX % for condition "[German condition]"[, minus XX % for age (X years)])
 
 CATEGORY:
 [Matching main category on Kleinanzeigen.de]
@@ -108,7 +110,8 @@ CATEGORY:
 - **No "Hallo zusammen"**, no smileys, no exclamation marks
 - **Never hide defects**: this protects against bad reviews
 - **No stock phrases** like "Nur wegen Umzug" (only selling because of a move) unless it is true
-- **Always include the private-sale notice**: legally important
+- **Always include the private-sale notice**: legally important. It must exclude the statutory warranty (*Gewährleistung*); "keine Garantie" alone is not enough. The exclusion does not cover defects the seller knew about and concealed, which is one more reason to state defects honestly.
+- **Title**: brand and model first, because buyers search for them
 - **Shipping**: if unclear, use the standard wording from paragraph 3
 
 ---

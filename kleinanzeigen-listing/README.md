@@ -6,19 +6,7 @@ This skill adds a structured workflow to Claude for generating listings on **Kle
 
 ## Installation
 
-### Requirements
-- An active **Claude.ai** account (Pro or Team recommended)
-- The `SKILL.md` file from this repository
-
-### Step by Step
-
-1. Open [claude.ai](https://claude.ai) in your browser
-2. Click your **profile name** in the top-left corner → **Settings**
-3. Go to the **Skills** tab
-4. Click **"Create skill"** and paste the contents of `SKILL.md` into the editor
-5. Save the skill
-
-The skill will be available automatically in all new conversations.
+Install the `kleinanzeigen-listing` folder like any other skill in this repo, see the [main README](../README.md#usage). No configuration needed; the skill is available in all new conversations.
 
 ---
 
@@ -62,7 +50,7 @@ German phrases work as well. Claude talks to you in your language, but the listi
 Claude analyzes the photo or description and identifies brand, model, condition, notable features, and any visible defects.
 
 ### Step 2 — Three Follow-up Questions
-Claude asks exactly three questions in a single message:
+Claude asks up to three questions in a single message, leaving out anything you already mentioned:
 - When was it purchased / how old is it?
 - What was the original retail price?
 - Is any accessories or original packaging included?
@@ -78,6 +66,8 @@ A realistic asking price (VB = Verhandlungsbasis / negotiable) is calculated bas
 | Good condition | − 30 % |
 | Poor condition | − 50 % |
 | Defective | − 80 % |
+
+Items older than 2 years get a further 10 percentage points off per additional year (at most 30 points, total at most 90 %). Items that hold their value, like quality furniture, tools, instruments or bikes, get less of an age deduction.
 
 If the retail price is unknown, Claude estimates it and flags it clearly as an estimate.
 
@@ -112,7 +102,8 @@ Tasche, USB-C-Ladekabel und Klinkenadapter. Wird nicht mehr gebraucht,
 da auf Over-Ear-Modell mit Mikrofon gewechselt.
 
 Abholung in Köln bevorzugt. Versand möglich – Versandkosten trägt
-der Käufer. Privatverkauf, keine Garantie, keine Rücknahme.
+der Käufer. Privatverkauf unter Ausschluss jeglicher Gewährleistung,
+keine Rücknahme.
 
 PRICE:
 175 € VB
@@ -133,7 +124,8 @@ The skill deliberately uses a plain, factual tone because buyers on Kleinanzeige
 - No superlatives ("amazing", "top condition", "like new!!!")
 - No "Hallo zusammen", no emojis, no exclamation marks
 - Defects are mentioned honestly — this prevents disputes and bad reviews
-- The private sale disclaimer is always included (legally important in Germany)
+- The private sale disclaimer is always included and excludes the statutory warranty (*Gewährleistung*), which is what matters legally in Germany; "keine Garantie" alone would not be enough
+- Titles start with brand and model, because that is what buyers search for
 
 ---
 
@@ -158,6 +150,5 @@ Yes, just continue in the same conversation: "Make the title shorter" or "Add th
 ```
 kleinanzeigen-listing/
 ├── SKILL.md    — Full skill instructions for Claude
-├── Prompt.txt  — The original prompt the skill was created from
 └── README.md   — This file
 ```

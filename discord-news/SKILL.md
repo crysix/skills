@@ -1,6 +1,6 @@
 ---
 name: discord-news
-description: Posts news, articles and announcements to a configured Discord channel via browser automation. Always use this when the user shares a link and wants it posted on Discord, or says things like "post this to DC", "make a discord news post", "share this on Discord", "post this in the channel", "Discord message", "DC post" (or German equivalents such as "poste das im DC", "mach discord news", "teile das auf Discord"), even if only a URL is shared without further context. Start right away; do not ask whether the skill should be used.
+description: Posts news, articles and announcements to a configured Discord channel via browser automation. Use this only when the user explicitly asks to post something on Discord, e.g. "post this to DC", "make a discord news post", "share this on Discord", "post this in the channel", "Discord message", "DC post" (or German equivalents such as "poste das im DC", "mach discord news", "teile das auf Discord"). A link shared without such a request does not trigger this skill. Once asked, start right away; do not ask whether the skill should be used.
 ---
 
 # Discord News Skill
@@ -20,9 +20,8 @@ Posts formatted news messages to the configured Discord channel via browser auto
 
 ### Step 1: Extract the article
 
-Fetch the content of the shared link via `web_fetch`, or navigate to the URL in the browser. Extract:
+Fetch the content of the shared link with your web fetch tool, or navigate to the URL in the browser. Extract:
 - the article's **title**
-- the **publication date**
 - the **main message** (2–3 sentences)
 - the **key points** (3–6 bullet points)
 - the **original URL** (for the link at the end)
@@ -38,7 +37,7 @@ Wait until Discord has fully loaded. If a login is required, tell the user and w
 
 ### Step 3: Find the input field
 
-Use the `find` tool with a natural-language description such as:
+Use the browser's find tool (`find` in Claude in Chrome) with a natural-language description such as:
 - "message input field in the Discord channel"
 - "text box for writing a message"
 
@@ -86,6 +85,7 @@ One or two sentences summarizing the article.
 - At most 6 bullet points; keep them concise
 - Summary: 1–2 sentences, no jargon
 - Always put the URL at the end as plain text (not a Markdown link)
+- The whole message must stay under Discord's limit of 2,000 characters
 
 ### Step 5: Screenshot and confirmation
 
@@ -108,7 +108,7 @@ Only after an explicit "yes" / "send" / "go":
 ## Format example
 
 ```
-🔴 **OpenAI and Microsoft — A New Phase** 🤝
+🤖 **OpenAI and Microsoft — A New Phase** 🤝
 
 The partnership has been fundamentally restructured. Here are the key changes.
 
@@ -129,4 +129,4 @@ The partnership has been fundamentally restructured. Here are the key changes.
 | Not logged into Discord | Tell the user and wait until they have logged in |
 | Input field not found | Take a screenshot and ask the user for help |
 | Article cannot be fetched | Ask the user whether they want to paste the content manually |
-| Message too long | Shorten the bullet points, use at most 4 instead of 6 |
+| Message over 2,000 characters | Shorten the bullet points, use at most 4 instead of 6 |

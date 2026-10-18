@@ -27,7 +27,7 @@ The partnership has been fundamentally restructured. Here's what's changing.
 
 ## Requirements
 
-- **Claude.ai** with the **Claude in Chrome** extension enabled
+- **Claude** (claude.ai or Claude Code) with the **Claude in Chrome** extension enabled
 - Chrome browser with Discord open in a tab (Discord Web)
 - You must be logged into Discord
 
@@ -35,15 +35,11 @@ The partnership has been fundamentally restructured. Here's what's changing.
 
 ## Installation
 
-### 1. Get the skill
+### 1. Install the skill
 
-Download the `discord-news` folder from this repository (the skill itself is just `SKILL.md`).
+Install the `discord-news` folder like any other skill in this repo, see the [main README](../README.md#usage).
 
-### 2. Import into Claude
-
-In [claude.ai](https://claude.ai), open the **Skills** settings and upload the skill (as a ZIP of the folder). In Claude Code, copy the folder to `~/.claude/skills/discord-news/`.
-
-### 3. Configure the skill
+### 2. Configure the skill
 
 Edit `SKILL.md` and replace the placeholders under the **Configuration** section with your own values:
 
@@ -82,6 +78,8 @@ Or more explicitly:
 Post this article to the Discord channel: https://example.com/article
 ```
 
+A link on its own, without asking to post it, does **not** trigger the skill.
+
 Claude will then automatically:
 
 1. **Fetch the article** — extract title, key takeaways, and important facts
@@ -107,6 +105,8 @@ Short summary in 1–2 sentences.
 
 🔗 https://original-url.com
 ```
+
+The whole message stays under Discord's limit of 2,000 characters.
 
 **Emoji is chosen automatically based on topic:**
 

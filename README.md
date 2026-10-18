@@ -11,7 +11,7 @@ My personal collection of skills for AI agents like Claude Code and Codex. Nothi
 | [kleinanzeigen-listing](kleinanzeigen-listing/) | Turns a photo into a ready-to-paste Kleinanzeigen.de listing with a price suggestion |
 | [motion-video](motion-video/) | Builds short explainer or ad videos with motion graphics, AI cutout images, voiceover and sound |
 
-Every folder has a `SKILL.md`, and most also have a `README.md` with the details.
+Every folder has a `SKILL.md` and a `README.md` with the details.
 
 ## Usage
 
@@ -20,6 +20,7 @@ Copy (or symlink) a skill folder to wherever your agent loads skills from:
 - Claude Code, all projects: `~/.claude/skills/<skill>/`
 - Claude Code, one project: `.claude/skills/<skill>/`
 - Codex: `~/.codex/skills/<skill>/`
+- claude.ai: zip the skill folder and upload it in the Skills settings
 
 ```bash
 git clone https://github.com/crysix/skills.git

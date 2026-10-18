@@ -1,6 +1,6 @@
 ---
 name: brainstorm
-description: Facilitate structured, collaborative brainstorming sessions using proven ideation techniques. Use when the user wants to brainstorm.
+description: Facilitate structured, collaborative brainstorming sessions using proven ideation techniques. Use when the user wants to brainstorm or generate ideas, e.g. "let's brainstorm", "I need ideas for …", "help me come up with …", "brainstorming session on …", "I want to think creatively about …", or asks for an ideation session.
 ---
 
 # Brainstorm
@@ -28,6 +28,8 @@ Setup sequence:
 7. Ask: “Do you want broad exploration, specific solutions, wild ideas, or practical next steps?”
 8. Wait for the user’s answer.
 
+Skip any question the user has already answered, for example when the opening message already names the topic.
+
 After all setup answers are collected, summarize:
 
 - Topic
@@ -41,7 +43,7 @@ Ask the user to confirm before starting.
 
 Offer four modes:
 
-1. **User-selected techniques** — providide the techniques as a list.
+1. **User-selected techniques** — list the techniques so the user can pick.
 2. **Recommended techniques** — choose methods based on their topic and goals.
 3. **Random technique** — introduce surprise to break patterns.
 4. **Progressive flow** — start broad, then narrow toward actionable ideas.

@@ -19,27 +19,7 @@ Instead of just dumping a list of ideas, Claude acts as an **active facilitator*
 
 ## Installation
 
-### Prerequisites
-
-- Access to [Claude.ai](https://claude.ai) (Pro, Team, or Enterprise)
-- Claude must support the Skills system (available via the Skills interface in Claude.ai)
-
-### Setup
-
-1. **Save the skill file**  
-   Place `SKILL.md` in your skills directory, e.g.:
-   ```
-   /mnt/skills/user/brainstorm/SKILL.md
-   ```
-
-2. **Register the skill**  
-   Add the skill to your skill configuration (e.g. in the system prompt or via the Claude.ai Skills interface):
-   ```
-   name: brainstorm
-   description: Facilitate structured, collaborative brainstorming sessions using proven ideation techniques. Use when the user wants to brainstorm.
-   ```
-
-3. **Done** — Claude will automatically detect when to activate the skill.
+Install the `brainstorm` folder like any other skill in this repo, see the [main README](../README.md#usage). No configuration needed; Claude detects automatically when to use it.
 
 ---
 
@@ -72,6 +52,8 @@ Claude: "Are there constraints, audiences, or resources I should consider?"
 ...
 ```
 
+Questions you have already answered are skipped: if your first message names the topic, Claude goes straight to the next question (see the example opener below).
+
 After the setup phase, Claude summarizes the topic, goal, constraints, and preferred energy style, then asks for confirmation before starting the actual session.
 
 ---
@@ -91,14 +73,15 @@ At the start, you and Claude choose one of four modes:
 
 ## Available techniques (overview)
 
-The skill includes 30+ techniques across 6 categories:
+The skill includes 44 techniques across 7 categories:
 
 **Collaborative:** Yes-And Building, Brainwriting Round Robin, Random Stimulation, Role Playing, Ideation Relay  
-**Creative:** What-If Scenarios, Analogical Thinking, Reversal/Inversion, First Principles, SCAMPER, Forced Relationships, Concept Blending  
-**Deep Analysis:** Five Whys, Assumption Reversal, Question Storming, Failure Analysis, Constraint Mapping, Morphological Analysis  
-**Structured:** Six Thinking Hats, Mind Mapping, Solution Matrix, Decision Tree Mapping, Trait Transfer  
-**Playful / Theatrical:** Alien Anthropologist, Future Self Interview, Parallel Universe, Dream Solution, Persona Journey  
-**Wild / Edge-Case:** Chaos Engineering, Anti-Solution, Black Swan Events, Zombie Apocalypse  
+**Creative:** What-If Scenarios, Analogical Thinking, Reversal/Inversion, First Principles, Forced Relationships, Time Shifting, Metaphor Mapping, Cross-Pollination, Concept Blending, Reverse Brainstorming  
+**Deep Analysis:** Five Whys, Morphological Analysis, Provocation, Assumption Reversal, Question Storming, Constraint Mapping, Failure Analysis, Emergent Thinking  
+**Structured:** SCAMPER, Six Thinking Hats, Mind Mapping, Resource Constraints, Decision Tree Mapping, Solution Matrix, Trait Transfer  
+**Playful / Theatrical:** Alien Anthropologist, Future Self Interview, Parallel Universe, Emotion Orchestra, Dream Solution, Persona Journey  
+**Wild / Edge-Case:** Chaos Engineering, Pirate Mode, Zombie Apocalypse, Anti-Solution, Black Swan Events  
+**Nature / Systems:** Nature's Solutions, Ecosystem Thinking, Evolutionary Pressure  
 
 ---
 
@@ -167,6 +150,6 @@ Claude: "And what energy should the session have — practical and actionable,
 
 ---
 
-## License & origin
+## License
 
-This skill was developed as a standalone `SKILL.md` and is compatible with the Claude Skills system. It can be freely adapted and extended.
+MIT, see [LICENSE](../LICENSE). Feel free to adapt and extend it.
