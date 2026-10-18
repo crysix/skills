@@ -115,13 +115,20 @@ CATEGORY:
 
 ## Category reference (Kleinanzeigen.de)
 
-Common main categories (use the German names as they appear on the site):
-- Elektronik (electronics) → phones, laptops, TV, audio
-- Möbel & Wohnen (furniture & living) → sofas, tables, lamps
-- Kleidung & Accessoires (clothing & accessories) → by target group
-- Sport & Camping (sports & camping) → bicycles, fitness equipment
-- Haushalt (household) → kitchen appliances, household appliances
-- Garten & Heimwerken (garden & DIY) → tools, plants
-- Spielzeug & Kinderbedarf (toys & children's items) → state the age
-- Auto & Zubehör (car & accessories) → car parts, accessories
-- Freizeit (leisure) → books, music, collectibles
+Give the category as `Main category → Subcategory`, using the exact German names from this list. If no subcategory fits, use the "Weitere …" subcategory of the closest main category. The names are taken from https://www.kleinanzeigen.de/s-kategorien.html (as of October 2026); if the site has changed them, the site wins.
+
+Main categories for selling items, with their subcategories:
+- **Elektronik** (electronics): Audio & Hifi · Foto · Haushaltsgeräte · Kommunikation & Funk · Konsolen · Laptops & Notebooks · PCs · PC-Zubehör & Software · Smartphones · Smartphone Zubehör · Tablets & Reader · Telefone & Fax · TV & Video · Videospiele · Wearables · Wearables Zubehör · Weitere Elektronik
+- **Haus & Garten** (home & garden): Badezimmer · Büro · Dekoration · Gartenzubehör & Pflanzen · Heimtextilien · Heimwerken · Küche & Esszimmer · Lampen & Licht · Schlafzimmer · Wohnzimmer · Weiteres Haus & Garten
+- **Mode & Beauty** (fashion & beauty): Beauty & Gesundheit · Damenbekleidung · Damenschuhe · Herrenbekleidung · Herrenschuhe · Taschen & Accessoires · Uhren & Schmuck · Weiteres Mode & Beauty
+- **Familie, Kind & Baby** (family, kids & baby): Baby- & Kinderkleidung · Baby- & Kinderschuhe · Baby-Ausstattung · Babyschalen & Kindersitze · Kinderwagen & Buggys · Kinderzimmermöbel · Spielzeug · Weiteres Familie, Kind & Baby
+- **Freizeit, Hobby & Nachbarschaft** (leisure & hobbies): Esoterik & Spirituelles · Essen & Trinken · Handarbeit, Basteln & Kunsthandwerk · Kunst & Antiquitäten · Modellbau · Sammeln · Sport & Camping · Trödel · Weiteres Freizeit, Hobby & Nachbarschaft
+- **Musik, Filme & Bücher** (music, films & books): Bücher & Zeitschriften · Büro & Schreibwaren · Comics · Fachbücher, Schule & Studium · Film & DVD · Musik & CDs · Musikinstrumente · Weitere Musik, Filme & Bücher
+- **Auto, Rad & Boot** (vehicles): Autos · Autoteile & Reifen · Boote & Bootszubehör · Fahrräder & Zubehör · Motorräder & Motorroller · Motorradteile & Zubehör · Nutzfahrzeuge & Anhänger · Wohnwagen & -mobile · Weiteres Auto, Rad & Boot
+- **Haustiere** (pets): Zubehör (for pet supplies)
+- **Eintrittskarten & Tickets** (tickets): Bahn & ÖPNV · Comedy & Kabarett · Gutscheine · Kinder · Konzerte · Sport · Theater & Musical · Weitere Eintrittskarten & Tickets
+- **Verschenken & Tauschen** (give away & swap): Tauschen · Verleihen · Verschenken (only if the user wants to give the item away or swap it)
+
+Easy to get wrong: furniture goes under **Haus & Garten** by room (e.g. a sofa → Wohnzimmer, a desk → Büro), except children's furniture (**Familie, Kind & Baby → Kinderzimmermöbel**). Kitchen and household appliances go under **Elektronik → Haushaltsgeräte**. Sports and fitness equipment goes under **Freizeit, Hobby & Nachbarschaft → Sport & Camping**, but bicycles go under **Auto, Rad & Boot → Fahrräder & Zubehör**.
+
+The other main categories (Immobilien, Jobs, Dienstleistungen, Unterricht & Kurse, Nachbarschaftshilfe) are not for selling items.

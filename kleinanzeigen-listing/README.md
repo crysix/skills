@@ -86,7 +86,7 @@ The output is a formatted copy-paste block containing:
 - **Title** (max. 65 characters, clear and without clickbait)
 - **Description** in three paragraphs (what it is & condition / highlights & reason for selling / shipping & private sale notice)
 - **Price** as VB with a visible calculation
-- **Category** matching Kleinanzeigen.de's structure
+- **Category** as `Main category → Subcategory`, using Kleinanzeigen.de's current category names
 
 ---
 
@@ -119,7 +119,7 @@ PRICE:
 (original price: 250 € → minus 30 % for condition "Gut erhalten")
 
 CATEGORY:
-Elektronik → Audio → Kopfhörer
+Elektronik → Audio & Hifi
 
 ════════════════════════════════════════
 ```
