@@ -21,6 +21,7 @@ Status: ✅ done · 🔄 in progress · ⬜ open
 - Existing website or brand:
 - Main goal of the site:
 - Hosting:
+- Country and language: Germany, German (countries/de.md)
 - Tools: impeccable ⬜ · Playwright ⬜ · DataForSEO ⬜ · hosting MCP ⬜ · form target ⬜
 - Python command (for the skill's scripts):
 

@@ -25,14 +25,14 @@ Before the legal pages and before the upload, clarify whether the site needs coo
 
 In short: measure the local site, search the code, ask the user what is still to come. Without tracking, without embedded third-party content and without sales, nothing is needed, and one sentence in the status file is enough. The result goes into the privacy policy.
 
-## 3. Legal pages (Germany)
+## 3. Legal pages
 
-A legal notice (Impressum) and a privacy policy (Datenschutzerklärung) are mandatory. What matters is that they fit the real site:
-- Use a generator (for example e-recht24 or Datenschutz-Generator.de) and enter exactly the services the site really uses.
+Which pages are mandatory, what goes into them and which generators help is in the country file, section "Legal pages" (Germany: legal notice and privacy policy). What matters is that they fit the real site:
+- With a generator, enter exactly the services the site really uses.
 - Remove services that are no longer used (old embeds, analytics tools, appointment booking, chatbots).
 - Describe how the form is sent (where the data goes, for example to n8n on the own server).
 - Briefly mention local fonts and the absence of cookies.
-- The link to the EU online dispute resolution platform is obsolete since the platform was shut down (July 2025).
+- Apply the notes in the country file on outdated content, especially on a redesign.
 
 Tell the user clearly: this doesn't replace legal advice. When the site changes, regenerate the texts.
 
@@ -63,7 +63,7 @@ Recommendation for beginners with web space: the PHP script. Anyone already usin
 - **Formspree:** create a form on formspree.io, put the address `https://formspree.io/f/<id>` into `data-endpoint`.
 - **Web3Forms:** request an access key by email on web3forms.com. `data-endpoint="https://api.web3forms.com/submit"` and in the form `<input type="hidden" name="access_key" value="<key>">`. The key may sit publicly in the HTML; it only allows sending to the stored address.
 - **Netlify Forms:** `data-netlify="true"` and `name` on the `<form>`; then send classically without `form.js`, or via `fetch` to `/` with `application/x-www-form-urlencoded` (see the Netlify docs).
-- Name the service in the privacy policy. For services outside the EU, pay attention to data processing agreements and data transfers.
+- Name the service in the privacy policy. For services abroad, check data processing agreements and data transfers (country file, section "Privacy law and consent").
 
 ### Webhook (example n8n)
 

@@ -17,6 +17,8 @@ Four questions in one message, each with a recommendation:
 
    The question could read something like: "I recommend DataForSEO for the research. New accounts get $1 of trial credit, which is often enough for this project: https://dataforseo.com/?aff=f743f28f-d5b8-4e34-a66d-5c99089b7ca7. It's an affiliate link of the skill's author and costs you nothing extra. Would you like to use it?"
 
+**Country and language.** Don't ask separately. Assume Germany and German unless the existing site, the address or the conversation says otherwise, and state the assumption in one line of the same message so the user can correct it. Germany uses [../countries/de.md](../countries/de.md). For another country, use its file in `countries/` if there is one; otherwise the profile is built step by step with [../countries/other.md](../countries/other.md).
+
 ## 2. Create the project folder and status file
 
 ```
@@ -28,7 +30,7 @@ project/
 ```
 The other folders (`logo/`, `assets/`, `deploy/`, `tweak/`) appear in later phases.
 
-Create the status file from [../templates/WEBSITE-STATUS.md](../templates/WEBSITE-STATUS.md) and enter the answers from step 1. Set phase 0 to 🔄.
+Create the status file from [../templates/WEBSITE-STATUS.md](../templates/WEBSITE-STATUS.md) and enter the answers from step 1, including the country. Set phase 0 to 🔄.
 
 This happens before the installs, because the agent may have to be restarted afterwards.
 
@@ -73,7 +75,7 @@ Worth telling the user once: whoever continues later in a new chat, after a long
 
 ## Done when
 
-- [ ] The four questions are answered and in the status file.
+- [ ] The four questions are answered and in the status file, together with the country (default Germany).
 - [ ] impeccable works. Playwright works or is deliberately left out and noted in the status file.
 - [ ] Project folder and status file exist.
 

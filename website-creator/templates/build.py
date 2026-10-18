@@ -14,6 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, "dist")
 
 FILES = [
+    # Legal pages: names from the country file (Germany shown)
     "index.html", "impressum.html", "datenschutz.html",
     "robots.txt", "sitemap.xml", "llms.txt", ".htaccess",
     "assets/css/site.css", "assets/css/tweaks.css", "assets/js/main.js",

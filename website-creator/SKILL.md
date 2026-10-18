@@ -58,6 +58,10 @@ In the same chat, work simply continues after each phase and after each restart,
 7. **Copy without an AI ring.** See [writing-rules.md](writing-rules.md).
 8. **Check in bounded passes.** Build, check once in a batch, fix everything at once, at most a second pass. No endless polishing.
 
+## Country
+
+Everything that depends on the country lives in a country file: domain and trademark check, search location codes, privacy and cookie law, legal pages, rules for selling online, official sources. The default is Germany, [countries/de.md](countries/de.md). For another country, use its file in `countries/` or build a profile with [countries/other.md](countries/other.md). The status file names the country file; phases point to the section they need, and you read only that section.
+
 ## Tools
 
 | Tool | Required? | What for | Without the tool |
@@ -74,6 +78,7 @@ Each tool is set up where it's needed: impeccable and Playwright in [phase 0](ph
 ## Other files
 
 - [writing-rules.md](writing-rules.md): rules for website copy without an AI ring.
+- [countries/](countries/): `de.md` for Germany (default), `other.md` for building a profile for any other country.
 - [templates/](templates/): status file, robots.txt, llms.txt, sitemap.xml, .htaccess, structured data, build script, form script, form receiver in PHP, notification email, preview image, tweak panel.
 - [tools/](tools/): `extract_brand.py` (measure colors and fonts of a live site) and `check_site.py` (batched check run with screenshots).
 

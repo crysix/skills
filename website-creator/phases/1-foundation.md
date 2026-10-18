@@ -29,8 +29,8 @@ Then put a short brand profile into the status file:
 If there is no name yet, it comes before everything else, because the domain, logo, copy and the later description in AI search all depend on it. Don't invent a brand on your own: you propose, the user decides.
 
 1. **Questions in one message:** What does the user offer, and to whom? What should the name stand for? Three adjectives for the brand. Their own name as the brand, or an invented name? Regional or national?
-2. **Eight to twelve proposals** as a table: name, meaning in one sentence, how it sounds (can it be spelled over the phone?), whether the domain is free (in Germany the `.de` domain). Check the domain through the host's domain search, via `whois` or RDAP (for `.de`: `https://rdap.denic.de/domain/<name>.de`, "not found" usually means free). Also do a quick search whether someone in the same industry already uses the name.
-3. **Trademark law:** The user checks the favorite themselves in the register of the German Patent and Trade Mark Office (register.dpma.de) and at the EUIPO. Say clearly that this is not legal advice and that a free domain says nothing about trademark rights.
+2. **Eight to twelve proposals** as a table: name, meaning in one sentence, how it sounds (can it be spelled over the phone?), whether the country's domain is free (Germany: `.de`). How to check it is in the country file, section "Domain and name check". Also do a quick search whether someone in the same industry already uses the name.
+3. **Trademark law:** The user checks the favorite themselves in the trademark registers the country file names (Germany: DPMA and EUIPO). Say clearly that this is not legal advice and that a free domain says nothing about trademark rights.
 4. **Decision** with date into the status file. The user secures the domain themselves, ideally right away with the future host.
 
 A new brand has no colors and fonts yet. Ask for three to five sites the user likes, from any industry, and note them for phase 2. That's where the palette emerges from the references; until then the brand profile in the status file stays open.

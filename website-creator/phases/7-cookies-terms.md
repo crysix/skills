@@ -1,12 +1,12 @@
 # Phase 7, step 2: Check cookies and terms
 
-Goal: Before the upload, it's clear whether the site needs cookie consent or terms and conditions (AGB). If yes, both are implemented together with the user, as a first draft. This happens before launch, because a site that needs consent or terms must have them from the first visitor on.
+Goal: Before the upload, it's clear whether the site needs cookie consent or terms and conditions. If yes, both are implemented together with the user, as a first draft. This happens before launch, because a site that needs consent or terms must have them from the first visitor on.
 
-The legal framework here is German and EU law. For a site that targets another country, check that country's rules instead and tell the user that this section doesn't cover them.
+The law comes from the country file (status file; default [../countries/de.md](../countries/de.md)), sections "Privacy law and consent" and "Selling online". This file describes the flow.
 
 Usually this step is quick. A service site as this skill builds it, i.e. without tracking, without embedded third-party content, with self-hosted fonts and a form posting to the own server, usually needs neither a cookie banner nor terms. Then the result is recorded in one sentence in the status file, and you continue with step 3 in [7-launch.md](7-launch.md).
 
-Tell the user clearly at the start: this is not legal advice. Everything produced here is a first draft based on official sources. Before use, the user checks it themselves or has it checked (lawyer, chamber of commerce (IHK), legal-text service with protection against cease-and-desist letters).
+Tell the user clearly at the start: this is not legal advice. Everything produced here is a first draft based on official sources. Before use, the user checks it themselves or has it checked (country file, section "Professional help").
 
 ## 1. Inventory
 
@@ -18,7 +18,7 @@ Look yourself first, then ask.
 
 ## 2. Cookies and consent
 
-The rule is § 25 TDDDG: storing or reading information on the visitor's device is only allowed with consent, unless it is strictly necessary for the service the visitor requested. On top of that comes the GDPR as soon as personal data such as the IP address goes to third parties while loading, even without any cookies.
+The country file names the rule. Under EU law (Germany and every other EU country), it boils down to this table; for a country outside the EU, the country profile decides.
 
 | On the site | Consent needed? |
 |---|---|
@@ -34,11 +34,7 @@ The rule is § 25 TDDDG: storing or reading information on the visitor's device 
 - Where inquiries come from is shown by the "How did you hear about us?" field in the form.
 - Videos and maps as a two-click solution: a preview image with a notice; the real content only loads after the click.
 
-**If consent is needed,** it must meet these requirements (guidance of the German Data Protection Conference (DSK) for digital services, as of November 2024):
-- Scripts, pixels and embeds only load after consent, not in the background beforehand.
-- Declining is as easy as accepting; no preselected checkboxes.
-- Purposes and recipients are in the banner or directly reachable from it.
-- Consent can be withdrawn at any time, for example via a link in the footer.
+**If consent is needed,** it must meet the requirements in the country file. In the EU these always include: nothing loads before consent, declining is as easy as accepting, purposes and recipients are visible, and consent can be withdrawn at any time.
 
 Use a ready-made consent service for this instead of building your own banner. Free options (as of October 2026; check the conditions on the provider's site before recommending one):
 
@@ -51,24 +47,13 @@ Setup: the user creates the account and domain at the service; you add the scrip
 
 ## 3. Terms and conditions and selling through the site
 
-Terms and conditions (AGB) are not required by law. They become necessary as soon as contracts are concluded through the site: shop, paid bookings, courses, subscriptions, digital products. A pure inquiry site needs none; the conditions are then in the proposal.
+Terms and conditions become necessary as soon as contracts are concluded through the site: shop, paid bookings, courses, subscriptions, digital products. A pure inquiry site needs none; the conditions are then in the proposal.
 
-When selling to consumers, obligations come on top that matter more than the terms themselves:
-- mandatory information before the order (Art. 246a EGBGB) and prices including VAT (Price Indication Ordinance, PAngV)
-- cancellation policy and model withdrawal form (Annex 1 and 2 to Art. 246a EGBGB)
-- order button labeled "zahlungspflichtig bestellen" ("order with obligation to pay") or something equally clear (§ 312j BGB)
-- cancellation button for subscriptions and continuing contracts (§ 312k BGB)
-- notice on consumer dispute resolution (§ 36 VSBG), mandatory for more than ten employees
-- accessibility under the Accessibility Strengthening Act (BFSG, since 28 June 2025); micro-enterprises providing services are exempt
+When selling to consumers, the country file lists the obligations that come on top (section "Selling online"). They usually matter more than the terms themselves.
 
 Also tell the user: for selling, a static site isn't technically enough; that needs a shop or a payment service. That's a project of its own.
 
-**Draft terms:** on request, you write a draft that fits the actual offer, based on the statutory texts (§§ 305 to 310 BGB on the validity of terms and conditions) and the official templates. Don't copy clauses from other people's terms. Mark the draft clearly as a draft and recommend having it checked; when selling to consumers, ideally through a legal-text service with protection against cease-and-desist letters.
-
-## Official sources
-
-- Gesetze im Internet (gesetze-im-internet.de): TDDDG, BGB, EGBGB, PAngV, VSBG, BFSG
-- German Data Protection Conference, guidance for providers of digital services (November 2024): https://www.bfdi.bund.de/SharedDocs/Downloads/DE/DSK/Orientierungshilfen/OH_Digitale-Dienste.pdf
+**Draft terms:** on request, you write a draft that fits the actual offer, based on the statutory texts and official templates named in the country file. Don't copy clauses from other people's terms. Mark the draft clearly as a draft and recommend having it checked; when selling to consumers, ideally by the professional help the country file recommends.
 
 ## Sign-off
 

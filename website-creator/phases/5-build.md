@@ -9,8 +9,8 @@ Recommendation for service and personal sites: **static HTML, CSS and a little J
 Folder structure:
 ```
 index.html
-impressum.html             legal notice (Germany)
-datenschutz.html           privacy policy (Germany)
+impressum.html             legal pages; which ones and their file names come from
+datenschutz.html           the country file (Germany: legal notice, privacy policy)
 assets/css/site.css
 assets/css/tweaks.css      empty, for the tweak panel in phase 6
 assets/js/main.js
@@ -19,7 +19,7 @@ assets/img/                logo, favicon, photos, preview image
 ```
 
 Principles:
-- **Self-host fonts** (woff2, for example from the `@fontsource-variable` packages on npm). No Google Fonts link; in Germany that is a data protection problem, and it costs load time.
+- **Self-host fonts** (woff2, for example from the `@fontsource-variable` packages on npm). No Google Fonts link: it passes visitors' IP addresses to Google, which in the EU is a data protection problem (country file, section "Privacy law and consent"), and it costs load time.
 - **No third-party scripts** without a reason. No cookie banner needed if nothing tracks.
 - **Colors, spacing and font sizes as CSS variables** on `:root`. Values the user will later want to move themselves (spacing in the opening, sizes, positions) get variables of their own. The tweak panel in phase 6 needs that.
 - **Images** as WebP with a JPG fallback, with `width` and `height`; photos below the first screen with `loading="lazy"`.
@@ -33,7 +33,7 @@ Principles:
 3. First screen, until it's right. It decides the impression.
 4. Remaining sections in the order of `copy.md`.
 5. Form with in-browser validation, error messages, confirmation. Template: [../templates/form.js](../templates/form.js). The target (webhook or form service) is set in phase 7; until then, the form opens the email program.
-6. Legal notice and privacy policy in the site's style (content follows in phase 7).
+6. The legal pages the country file requires, in the site's style (content follows in phase 7).
 7. **Structured data** in the page head as JSON-LD: `Person` and/or `Organization` or `ProfessionalService`, plus `FAQPage` if there are questions. Template: [../templates/structured-data.json](../templates/structured-data.json). Only facts from `PRODUCT.md` and `copy.md`.
 8. Favicon set: `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` (180 pixels), `favicon-512.png`.
 

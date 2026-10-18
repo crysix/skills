@@ -13,7 +13,7 @@ A skill for AI agents like Claude Code or Codex that walks you step by step thro
 | **Phases** | nine, each with a sign-off before the next one starts |
 | **Design** | [impeccable](https://github.com/pbakaus/impeccable) plugin, against the generic AI look |
 | **Research** | DataForSEO (optional, about $1 per project) |
-| **Legal parts** | written for Germany (Impressum, privacy policy, TDDDG, terms and conditions) |
+| **Country** | Germany by default (Impressum, privacy policy, cookie law, terms and conditions); for other countries the skill researches a profile from official sources |
 
 ---
 
@@ -123,6 +123,7 @@ website-creator/
 ├── SKILL.md              Process, rules and tools for the agent
 ├── README.md             This file
 ├── writing-rules.md      Rules for copy without an AI ring
+├── countries/            de.md (Germany, default) and other.md (profile for any other country)
 ├── phases/               One file per phase, loaded only when that phase is up,
 │                         plus setup files for DataForSEO, cookies and terms, Hostinger
 ├── templates/            Status file, robots.txt, llms.txt, sitemap.xml, .htaccess,

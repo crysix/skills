@@ -27,7 +27,7 @@ If the user wants DataForSEO (status file, phase 0) and it isn't connected yet (
 
 ### With DataForSEO (five queries, under one dollar in total)
 
-1. **Search volume** for 30 to 40 terms the audience might type: service, service plus audience, service plus location, problems, questions. Endpoint `keywords_data/google_ads/search_volume/live`, set country and language to match (Germany: `location_code 2276`, `language_code de`). The MCP's short mode only shows ten results; use the full mode for all results.
+1. **Search volume** for 30 to 40 terms the audience might type: service, service plus audience, service plus location, problems, questions. Endpoint `keywords_data/google_ads/search_volume/live`, set country and language from the country file, section "Search data" (Germany: `location_code 2276`, `language_code de`). The MCP's short mode only shows ten results; use the full mode for all results.
 2. **Google results** for the two most important terms: `serp/google/organic/live/advanced`. Shows the competitors, the questions from "People also ask" and which sources Google's AI Overview cites.
 3. **ChatGPT answers** with web search: `ai_optimization/chat_gpt/llm_responses/live`. Three questions:
    - a question as a customer would ask it ("Who helps mid-sized companies with …?"),
