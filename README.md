@@ -13,9 +13,19 @@ My personal collection of skills for AI agents like Claude Code and Codex. Nothi
 
 Every folder has a `SKILL.md` and a `README.md` with the details.
 
-## Usage
+## Installation
 
-Copy (or symlink) a skill folder to wherever your agent loads skills from:
+Each skill's README has its own install section. The short version:
+
+**Let Claude do it.** Give Claude Code the link to a skill folder and ask it to install it:
+
+```
+Install the skill from https://github.com/crysix/skills/tree/main/motion-video globally so it is available in every project.
+```
+
+Say "in this project" instead of "globally" to install it for the current project only.
+
+**Or by hand.** Copy (or symlink) a skill folder to wherever your agent loads skills from:
 
 - Claude Code, all projects: `~/.claude/skills/<skill>/`
 - Claude Code, one project: `.claude/skills/<skill>/`
@@ -23,11 +33,9 @@ Copy (or symlink) a skill folder to wherever your agent loads skills from:
 - claude.ai: zip the skill folder and upload it in the Skills settings
 
 ```bash
-git clone https://github.com/crysix/skills.git
-ln -s "$PWD/skills/motion-video" ~/.claude/skills/motion-video
+git clone https://github.com/crysix/skills.git ~/skills
+mkdir -p ~/.claude/skills && ln -s ~/skills/motion-video ~/.claude/skills/motion-video
 ```
-
-Or just drag a `SKILL.md` into a Claude Code chat and ask Claude to install it.
 
 ## License
 

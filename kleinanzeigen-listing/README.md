@@ -6,7 +6,40 @@ This skill adds a structured workflow to Claude for generating listings on **Kle
 
 ## Installation
 
-Install the `kleinanzeigen-listing` folder like any other skill in this repo, see the [main README](../README.md#usage). No configuration needed; the skill is available in all new conversations.
+### Let Claude install it (easiest)
+
+Give Claude Code the link to this skill and ask it to install it:
+
+**For all projects**
+```
+Install the skill from https://github.com/crysix/skills/tree/main/kleinanzeigen-listing globally so it is available in every project.
+```
+
+**For this project only**
+```
+Install the skill from https://github.com/crysix/skills/tree/main/kleinanzeigen-listing in this project.
+```
+
+Claude downloads the folder and puts it in the right place: `~/.claude/skills/kleinanzeigen-listing/` for all projects, `.claude/skills/kleinanzeigen-listing/` for one project.
+
+### Install manually
+
+```bash
+git clone https://github.com/crysix/skills.git ~/skills
+
+# all projects
+mkdir -p ~/.claude/skills && cp -r ~/skills/kleinanzeigen-listing ~/.claude/skills/
+
+# this project only (run inside the project)
+mkdir -p .claude/skills && cp -r ~/skills/kleinanzeigen-listing .claude/skills/
+```
+
+Use `ln -s` instead of `cp -r` to pick up updates with `git pull`.
+
+- **Codex:** copy the folder to `~/.codex/skills/` instead.
+- **claude.ai:** zip the `kleinanzeigen-listing` folder and upload it in the Skills settings.
+
+No configuration needed; the skill is available in all new conversations.
 
 ---
 

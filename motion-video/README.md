@@ -87,35 +87,37 @@ Claude renders the video in a Higgsfield cloud sandbox, so there is nothing to i
 
 ## Installation
 
-The skill consists of a single file, `SKILL.md`.
-
 ### Option A: let Claude install it (recommended)
 
-Open Claude Code, drag `SKILL.md` into the chat and send one of these prompts with it:
+Give Claude Code the link to this skill and ask it to install it:
 
 **For all projects**
 ```
-Install the skill from the attached SKILL.md globally so it is available in every project.
+Install the skill from https://github.com/crysix/skills/tree/main/motion-video globally so it is available in every project.
 ```
 
 **For this project only**
 ```
-Install the skill from the attached SKILL.md in this project.
+Install the skill from https://github.com/crysix/skills/tree/main/motion-video in this project.
 ```
+
+Claude downloads the folder and puts it in the right place: `~/.claude/skills/motion-video/` for all projects, `.claude/skills/motion-video/` for one project.
+
+If you already have `SKILL.md` locally, you can also drag it into the chat and write "Install the skill from the attached SKILL.md globally" (or "in this project").
 
 ### Option B: install it manually
 
-**Claude Code, all projects:**
 ```bash
-mkdir -p ~/.claude/skills/motion-video
-cp SKILL.md ~/.claude/skills/motion-video/
+git clone https://github.com/crysix/skills.git ~/skills
+
+# all projects
+mkdir -p ~/.claude/skills && cp -r ~/skills/motion-video ~/.claude/skills/
+
+# this project only (run inside the project)
+mkdir -p .claude/skills && cp -r ~/skills/motion-video .claude/skills/
 ```
 
-**Claude Code, one project:**
-```bash
-mkdir -p .claude/skills/motion-video
-cp SKILL.md .claude/skills/motion-video/
-```
+Use `ln -s` instead of `cp -r` to pick up updates with `git pull`. `preferences.md` is then written into the clone, where `.gitignore` keeps it out of the repo.
 
 **Other agents:** put the `motion-video` folder wherever your agent loads skills from, for example `~/.codex/skills/` for Codex (check the agent's documentation for the current path).
 

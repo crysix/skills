@@ -37,11 +37,38 @@ The partnership has been fundamentally restructured. Here's what's changing.
 
 ### 1. Install the skill
 
-Install the `discord-news` folder like any other skill in this repo, see the [main README](../README.md#usage).
+**Let Claude install it (easiest).** Give Claude Code the link to this skill and ask it to install it. You can pass your channel details in the same message, then Claude fills in the configuration as well:
+
+**For all projects**
+```
+Install the skill from https://github.com/crysix/skills/tree/main/discord-news globally so it is available in every project. Configure it for https://discord.com/channels/SERVER_ID/CHANNEL_ID (server "my-server", channel "#news", posts in English).
+```
+
+**For this project only**
+```
+Install the skill from https://github.com/crysix/skills/tree/main/discord-news in this project. Configure it for https://discord.com/channels/SERVER_ID/CHANNEL_ID (server "my-server", channel "#news", posts in English).
+```
+
+Claude downloads the folder and puts it in the right place: `~/.claude/skills/discord-news/` for all projects, `.claude/skills/discord-news/` for one project.
+
+**Install manually:**
+
+```bash
+git clone https://github.com/crysix/skills.git ~/skills
+
+# all projects
+mkdir -p ~/.claude/skills && cp -r ~/skills/discord-news ~/.claude/skills/
+
+# this project only (run inside the project)
+mkdir -p .claude/skills && cp -r ~/skills/discord-news .claude/skills/
+```
+
+- **Codex:** copy the folder to `~/.codex/skills/` instead.
+- **claude.ai:** configure `SKILL.md` first (step 2), then zip the `discord-news` folder and upload it in the Skills settings.
 
 ### 2. Configure the skill
 
-Edit `SKILL.md` and replace the placeholders under the **Configuration** section with your own values:
+If you didn't pass your channel details when installing, edit the installed `SKILL.md` and replace the placeholders under the **Configuration** section with your own values:
 
 | Placeholder | Replace with | Example |
 |---|---|---|
