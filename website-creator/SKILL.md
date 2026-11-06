@@ -57,6 +57,7 @@ In the same chat, work simply continues after each phase and after each restart,
 6. **Live steps only with an explicit OK.** Deployment, DNS changes and real test submissions of the form only after the user confirms.
 7. **Copy without an AI ring.** See [writing-rules.md](writing-rules.md).
 8. **Check in bounded passes.** Build, check once in a batch, fix everything at once, at most a second pass. No endless polishing.
+9. **Mail addresses never go online in plain text.** Write them normally in the source. `deploy/build.py` hides them from bots on the way to `dist/`, the browser restores them, and visitors notice nothing ([phase 7](phases/7-launch.md)).
 
 ## Country
 

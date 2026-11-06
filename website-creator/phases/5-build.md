@@ -26,6 +26,7 @@ Principles:
 - **Images** as WebP with a JPG fallback, with `width` and `height`; photos below the first screen with `loading="lazy"`.
 - **Animate with GSAP** (see "Animation with GSAP" below), deliberately, and switchable off with `prefers-reduced-motion`.
 - **Think mobile first.** Most visitors come via their phone. 16 pixels of side margin, no horizontal scrolling.
+- **Write mail addresses normally**, also as `mailto:` links and in structured data. In phase 7 `deploy/build.py` hides them from bots that collect addresses, and the browser restores them. Don't build your own solution: a click-to-reveal button, an image or an `[at]` spelling makes contact harder, and the legal notice has to show the address readably.
 
 ## Order
 

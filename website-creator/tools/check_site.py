@@ -7,6 +7,7 @@ One run does:
 - console errors and failed files
 - a check for horizontal scrolling
 - images without alt text, headings in order, page title and description
+- on a live site: mail addresses still in plain text in the page source (the local source keeps them on purpose)
 
 All results land in the --out folder (default: site-check/). Look at everything first,
 then fix all errors in one pass, then a second run.
@@ -15,7 +16,9 @@ The full-page screenshots are also saved as desktop.png and mobile.png in the --
 folder (default: .impeccable/review/), where impeccable's finish reviewer looks for them.
 """
 import os
+import re
 import sys
+from urllib.parse import urlparse
 
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError, sync_playwright
 
@@ -23,6 +26,15 @@ DEVICES = [
     ("desktop", {"width": 1440, "height": 900}, False),
     ("mobile", {"width": 390, "height": 844}, True),
 ]
+
+MAIL_PATTERN = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
+
+# Look like addresses, but aren't: file names such as logo@2x.png, and sample addresses
+NOT_MAIL = (
+    ".avif", ".css", ".gif", ".ico", ".jpeg", ".jpg", ".js", ".json", ".map", ".mjs", ".mp4", ".pdf", ".png",
+    ".svg", ".ttf", ".webm", ".webp", ".woff", ".woff2",
+    ".tld", ".example", ".invalid", ".test", "example.com", "example.org", "example.net",
+)
 
 INFO = r"""
 () => ({
@@ -32,7 +44,8 @@ INFO = r"""
   width: document.documentElement.scrollWidth,
   noAlt: [...document.images].filter(i => !i.hasAttribute("alt")).map(i => i.currentSrc || i.src),
   headings: [...document.querySelectorAll("h1, h2, h3")].map(h => h.tagName + "  " + h.textContent.trim().replace(/\s+/g, " ").slice(0, 90)),
-  jsonld: document.querySelectorAll('script[type="application/ld+json"]').length
+  jsonld: document.querySelectorAll('script[type="application/ld+json"]').length,
+  hiddenMails: document.querySelectorAll("[data-mail-key]").length
 })
 """
 
@@ -45,12 +58,20 @@ def open_page(page, url):
     """Load the page and wait for the network to go quiet, but not forever.
 
     Chat widgets, tracking and live connections keep some sites busy, so they never
-    reach "networkidle". After a short wait, the loaded page is checked anyway."""
-    page.goto(url, wait_until="load", timeout=60000)
+    reach "networkidle". After a short wait, the loaded page is checked anyway.
+    Returns the source as the server delivered it."""
+    response = page.goto(url, wait_until="load", timeout=60000)
     try:
         page.wait_for_load_state("networkidle", timeout=10000)
     except PlaywrightTimeoutError:
         print("Note: the network did not go quiet within 10 s, continuing with the loaded page.")
+    return response.text() if response else ""
+
+
+def plain_mails(source):
+    """Addresses a bot finds in the raw source. Sample values in form fields don't count."""
+    source = re.sub(r"""\bplaceholder=(["']).*?\1""", "", source)
+    return sorted({m.lower() for m in MAIL_PATTERN.findall(source) if not m.lower().endswith(NOT_MAIL)})
 
 
 def main():
@@ -77,7 +98,7 @@ def main():
             page.on("requestfailed", lambda r: failed.append(r.url))
             page.on("response", lambda r: failed.append(f"{r.status} {r.url}") if r.status >= 400 else None)
 
-            open_page(page, url)
+            source = open_page(page, url)
             page.wait_for_timeout(600)
             page.screenshot(path=f"{out}/{name}-top.png")
             height = page.evaluate("document.documentElement.scrollHeight")
@@ -105,6 +126,11 @@ def main():
                     problems.append("Meta description missing")
                 if sum(h.startswith("H1") for h in info["headings"]) != 1:
                     problems.append("Not exactly one H1")
+                if urlparse(url).hostname not in ("localhost", "127.0.0.1"):
+                    for mail in plain_mails(source):
+                        problems.append(f"Mail address in plain text in the page source: {mail}")
+            if info["hiddenMails"]:
+                problems.append(f"{name}: {info['hiddenMails']} hidden mail address(es) not restored, did the script run?")
             if info["horizontal"]:
                 problems.append(f"{name}: horizontal scrolling (page is {info['width']} px wide)")
             for src in info["noAlt"]:

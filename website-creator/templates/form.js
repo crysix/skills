@@ -26,6 +26,8 @@
    CSS: .field.has-error .field-error { display:block } (otherwise display:none),
         #form-wrap.is-sent form { display:none }, .hp { position:absolute; left:-9999px }
 
+   data-mailto stays a normal address in the source; deploy/build.py hides it on the way to dist/.
+
    Leave data-endpoint empty: the form then opens the email program.
    data-endpoint with an address: sending via fetch as JSON. Works with
    - own PHP script (templates/inquiry.php): data-endpoint="/inquiry.php"

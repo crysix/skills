@@ -12,7 +12,7 @@ Goal: The site is online, findable for Google and AI search engines, legally sou
 | preview image | 1200 × 630 pixels, in the site's style, for LinkedIn, WhatsApp and the like | [../templates/og-image.html](../templates/og-image.html) |
 | structured data | in the page head since phase 5, now check with the real domain | |
 | `robots.txt` | all search engines and AI crawlers explicitly allowed, pointer to the sitemap | [../templates/robots.txt](../templates/robots.txt) |
-| `llms.txt` | short profile in fact sentences that AI assistants read directly | [../templates/llms.txt](../templates/llms.txt) |
+| `llms.txt` | short profile in fact sentences that AI assistants read directly, without a mail address, because a plain text file can't hide it | [../templates/llms.txt](../templates/llms.txt) |
 | `sitemap.xml` | all pages | [../templates/sitemap.xml](../templates/sitemap.xml) |
 
 The preview image is made like this: copy the template into the `tweak/` folder, adapt the texts, photograph it with Playwright at 1200 × 630 as a PNG, put it at `assets/img/og-image.png`.
@@ -77,6 +77,7 @@ For every route: a real test inquiry is sent by the user themselves, or they exp
 ## 5. Prepare the upload
 
 - **Build script:** copy [../templates/build.py](../templates/build.py) to `deploy/build.py` and adapt the file list. It copies exactly the files that go live to `dist/`, versions the links to CSS and JS (so browsers load changes right away) and packs `dist.zip`. That way working files (research, panel, drafts) never land on the server.
+- **Mail addresses:** in `deploy/build.py`, enter the site's own addresses in `PUBLIC_MAILS` and the page that shows them in `MAIL_FALLBACK`. Every build then hides them in the copied HTML from bots that read the source, and a small script restores text and `mailto:` links in the browser. Visitors notice nothing; without JavaScript the address stays readable and links lead to the fallback page. If the build lists an address as still in plain text, add the site's own to the list; addresses of others, such as an authority, may stay. Bots that run a full browser still get the address, so this lowers spam but doesn't end it. If you add a Content-Security-Policy (the templates set none), allow this inline script, otherwise visitors get the state without JavaScript.
 - **Configuration for the host:** the hosting file (section "Configuration") names the template from [../templates/hosting/](../templates/hosting/) and the `HOST_FILES` entry for `build.py`: `.htaccess` for web space and Plesk, `_headers` for Netlify and Cloudflare, `vercel.json` for Vercel, the server configuration for an own server. Together with the host's domain settings, they force HTTPS, redirect `www` to the address without `www` (otherwise the form's allowed origin doesn't match), set caching and security headers and, where the host allows it, block working files. GitHub Pages allows no own headers.
 
 ## 6. Go online
@@ -89,7 +90,8 @@ For every route: a real test inquiry is sent by the user themselves, or they exp
 - All files return status 200 (`curl -I` on the page, CSS, JS, fonts, images, robots.txt, llms.txt, sitemap.xml).
 - Blocked folders and files (`/tweak/`, `.md` files etc.) return 403 or 404, where the host allows blocking.
 - Headers arrive: `curl -I` on a CSS file shows a long `Cache-Control` (or `Expires`) and `X-Content-Type-Options` (not on GitHub Pages).
-- `python3 tools/check_site.py https://domain.tld` for screenshots and console.
+- `python3 tools/check_site.py https://domain.tld` for screenshots and console. It also lists mail addresses still in plain text in the page source.
+- In the browser, the mail address looks normal and clicking it opens the email program.
 - Measure cookies and requests to third-party domains on the live site once more. The result must match step 2.
 - Check structured data with Google's Rich Results Test.
 - Check the preview image with the LinkedIn Post Inspector.
@@ -102,6 +104,7 @@ For later changes, record the update flow from the hosting file (section "Update
 - [ ] Cookies and terms checked, result in the status file, implemented before the upload if needed.
 - [ ] Legal notice and privacy policy fit the real site.
 - [ ] Form target set and checked with a test inquiry by the user.
+- [ ] Mail addresses gone from the page source, readable and clickable in the browser.
 - [ ] Site online, live check passed.
 - [ ] Flow for later updates in the status file.
 

@@ -191,7 +191,7 @@ Copy comes before design, so the layout is built for real content instead of pla
 - Cookie and terms check by the country file. For an inquiry-only site, that's usually one sentence.
 - Legal pages that fit the real site.
 - Form target of your choice: own PHP script, form service, Netlify Forms or a webhook. You send the test inquiry.
-- `build.py` packs only the files that go live and versions the CSS and JS links; the host configuration sets caching and security headers and blocks working files.
+- `build.py` packs only the files that go live, versions the CSS and JS links and hides mail addresses from bots that read the source, while visitors see and click them as usual; the host configuration sets caching and security headers and blocks working files.
 - Online only after your OK, by the route in the hosting file (MCP, CLI, SFTP or zip upload), followed by a live check.
 
 **8 · After launch**
